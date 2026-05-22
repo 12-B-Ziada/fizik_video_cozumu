@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Salim Yılmaz Anadolu Lisesi - Fizik Yazılısı</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg-main: #f8fafc;
+            --bg-gradient: radial-gradient(circle at top left, #f1f5f9 0%, #e2e8f0 100%);
+            --text-main: #0f172a;
+            --text-muted: #475569;
+            --card-bg: rgba(255, 255, 255, 0.75);
+            --card-border: rgba(255, 255, 255, 0.6);
+            --nav-bg: rgba(255, 255, 255, 0.65);
+            --primary: #6366f1; /* Canlı Mor/İndigo */
+            --primary-glow: rgba(99, 102, 241, 0.4);
+            --accent: #a855f7; /* Tamamlayıcı Parlak Mor */
+            --badge-bg: #f1f5f9;
+            --badge-text: #334155;
+            --badge-border: rgba(51, 65, 85, 0.1);
+            --blur: blur(20px);
+            --shadow-sm: 0 10px 30px -10px rgba(99, 102, 241, 0.05);
+            --shadow-lg: 0 20px 40px -15px rgba(15, 23, 42, 0.08);
+        }
+
+        [data-theme="dark"] {
+            --bg-main: #030712;
+            --bg-gradient: radial-gradient(circle at top right, #0b1528 0%, #030712 100%);
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --card-bg: rgba(15, 23, 42, 0.45);
+            --card-border: rgba(51, 65, 85, 0.35);
+            --nav-bg: rgba(3, 7, 18, 0.5);
+            --primary: #818cf8; /* Karanlık mod için yumuşatılmış mor */
+            --primary-glow: rgba(129, 140, 248, 0.5);
+            --accent: #c084fc; /* Karanlık mod parlak mor */
+            --badge-bg: rgba(255, 255, 255, 0.05);
+            --badge-text: #f8fafc;
+            --badge-border: rgba(255, 255, 255, 0.1);
+            --shadow-sm: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
+            --shadow-lg: 0 25px 60px -15px rgba(0, 0, 0, 0.7);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            transition: background 0.4s ease, border-color 0.4s ease, color 0.3s ease;
+            
+            /* Mobil tarayıcılardaki mavi seçim kutusunu engeller */
+            -webkit-tap-highlight-color: transparent !important;
+            outline: none !important;
+        }
+
+        body {
+            background: var(--bg-main);
+            background-image: var(--bg-gradient);
+            color: var(--text-main);
+            min-height: 100vh;
+            padding-bottom: 80px;
+        }
+
+        /* Üst Menü */
+        header {
+            background: var(--nav-bg);
+            backdrop-filter: var(--blur);
+            -webkit-backdrop-filter: var(--blur);
+            border-bottom: 1px solid var(--card-border);
+            padding: 16px 5%;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .brand-container {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .school-logo-icon {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            color: #fff;
+            width: 44px;
+            height: 44px;
+            border-radius: 12px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.3rem;
+            box-shadow: 0 8px 20px -4px var(--primary-glow);
+        }
+
+        .brand-text h2 {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--text-muted);
+            letter-spacing: -0.3px;
+        }
+
+        .brand-text p {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.3rem;
+            color: var(--primary);
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            margin-top: -2px;
+        }
+
+        .premium-theme-toggle {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            color: var(--text-main);
+            padding: 10px 20px;
+            border-radius: 30px;
+            cursor: pointer;
+            font-weight: 700;
+            font-size: 0.85rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .premium-theme-toggle:hover {
+            transform: translateY(-2px);
+            border-color: var(--primary);
+        }
+
+        /* Ana İçerik Alanı */
+        main {
+            max-width: 900px;
+            margin: 50px auto;
+            padding: 0 24px;
+        }
+
+        .hero {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .hero h1 {
+            font-size: 2.2rem;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            margin-bottom: 8px;
+        }
+
+        .hero p {
+            color: var(--text-muted);
+            font-size: 1.05rem;
+        }
+
+        /* Soru Kartları Listesi */
+        .matrix-container {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+
+        .matrix-card {
+            background: var(--card-bg);
+            backdrop-filter: var(--blur);
+            -webkit-backdrop-filter: var(--blur);
+            border: 1px solid var(--card-border);
+            padding: 18px 24px;
+            border-radius: 16px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: var(--shadow-sm);
+            position: relative;
+        }
+
+        .matrix-card::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 4px;
+            background: linear-gradient(to bottom, var(--primary), var(--accent));
+            opacity: 0.6;
+        }
+
+        .matrix-card:hover {
+            border-color: var(--primary-glow);
+            box-shadow: var(--shadow-lg), 0 10px 25px -10px var(--primary-glow);
+        }
+
+        .meta-group {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .index-box {
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: var(--primary);
+            background: var(--bg-main);
+            width: 42px;
+            height: 42px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 10px;
+            border: 1px solid var(--card-border);
+        }
+
+        .badge-premium {
+            background: var(--badge-bg);
+            color: var(--badge-text);
+            border: 1px solid var(--badge-border);
+            padding: 6px 14px;
+            border-radius: 10px;
+            font-weight: 700;
+            font-size: 0.85rem;
+        }
+
+        /* Buton Grubu */
+        .card-actions-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        /* GÜNCELLENDİ: Fotoğraf İkon Butonu - Mor Çizgili Tarz */
+        .action-photo-btn {
+            background: var(--badge-bg);
+            border: 1px solid var(--card-border);
+            color: var(--primary); /* Mor renk tonu */
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 0.95rem;
+            transition: transform 0.2s ease, background 0.2s ease, border-color 0.2s ease;
+        }
+
+        .action-photo-btn:hover {
+            transform: scale(1.1);
+            background: var(--card-bg);
+            border-color: var(--accent);
+            color: var(--accent); /* Üzerine gelince parlak mor */
+        }
+
+        /* GÜNCELLENDİ: Oynat (Video) Butonu - Mor Degradeli Premium Yapı */
+        .action-play-btn {
+            background: linear-gradient(135deg, var(--primary) 0%, #312e81 100%);
+            border: none;
+            color: #ffffff;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 0.95rem;
+            box-shadow: 0 8px 16px -4px var(--primary-glow);
+            position: relative;
+            z-index: 10;
+            transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), background 0.3s ease !important;
+        }
+
+        /* Masaüstü Hover Etkisi - Büyüme ve Dönme Animasyonu */
+        .action-play-btn:hover {
+            transform: scale(1.18) rotate(15deg);
+            background: linear-gradient(135deg, var(--accent) 0%, var(--primary) 100%);
+        }
+
+        /* Dokunulduğunda Tetiklenen Aktif Animasyon Sınıfı */
+        .action-play-btn.clicked-anim {
+            transform: scale(1.25) rotate(20deg) !important;
+            background: linear-gradient(135deg, var(--accent) 0%, var(--primary) 100%) !important;
+        }
+
+        /* Modallar */
+        .cinema-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(2, 6, 23, 0.8);
+            backdrop-filter: blur(12px);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .cinema-modal.active {
+            display: flex;
+            opacity: 1;
+        }
+
+        .cinema-body {
+            background: var(--bg-main);
+            border: 1px solid var(--card-border);
+            width: 95%;
+            max-width: 800px;
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: 0 30px 60px -15px rgba(0,0,0,0.6);
+        }
+
+        .cinema-header {
+            padding: 18px 24px;
+            border-bottom: 1px solid var(--card-border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .cinema-header h3 {
+            font-weight: 700;
+            font-size: 1.15rem;
+        }
+
+        .close-circle {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            color: var(--text-main);
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .close-circle:hover {
+            background: #f43f5e;
+            color: #fff;
+            border-color: #f43f5e;
+        }
+
+        .cinema-screen {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            background: #000;
+        }
+
+        .cinema-screen video {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            border: none;
+            outline: none;
+        }
+
+        .photo-screen {
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #ffffff; /* Her zaman saf beyaz kalacak arka plan */
+            min-height: 300px;
+        }
+
+        .photo-screen img {
+            max-width: 100%;
+            max-height: 70vh;
+            border-radius: 12px;
+            object-fit: contain;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="brand-container">
+            <div class="school-logo-icon">
+                <i class="fa-solid fa-graduation-cap"></i>
+            </div>
+            <div class="brand-text">
+                <h2>Salim Yılmaz Anadolu Lisesi</h2>
+                <p>12-B // Ziada</p>
+            </div>
+        </div>
+        <button class="premium-theme-toggle" id="modeSwitch">
+            <i class="fa-solid fa-moon"></i>
+            <span id="modeLabel">Karanlık Mod</span>
+        </button>
+    </header>
+
+    <main>
+        <div class="hero">
+            <h1>Fizik 2. Dönem 2. Yazılı Soruları</h1>
+            <p>Sorular ve Video Çözümleri</p>
+        </div>
+        
+        <div class="matrix-container" id="cardsGrid">
+            </div>
+    </main>
+
+    <div class="cinema-modal" id="videoCinema">
+        <div class="cinema-body">
+            <div class="cinema-header">
+                <h3 id="videoTitle">Soru Çözümü</h3>
+                <button class="close-circle" id="closeVideo"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <div class="cinema-screen">
+                <video id="customVideoPlayer" controls controlsList="nodownload"></video>
+            </div>
+        </div>
+    </div>
+
+    <div class="cinema-modal" id="photoCinema">
+        <div class="cinema-body">
+            <div class="cinema-header">
+                <h3 id="photoTitle">Soru Görseli</h3>
+                <button class="close-circle" id="closePhoto"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <div class="photo-screen">
+                <img id="questionImage" src="" alt="Soru Fotoğrafı">
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Tema Ayarı Yönetimi
+        const modeSwitch = document.getElementById('modeSwitch');
+        const modeIcon = modeSwitch.querySelector('i');
+        const modeLabel = document.getElementById('modeLabel');
+        
+        modeSwitch.addEventListener('click', () => {
+            const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+            if (isDark) {
+                document.documentElement.removeAttribute('data-theme');
+                modeIcon.className = 'fa-solid fa-moon';
+                modeLabel.innerText = 'Karanlık Mod';
+            } else {
+                document.documentElement.setAttribute('data-theme', 'dark');
+                modeIcon.className = 'fa-solid fa-sun';
+                modeLabel.innerText = 'Aydınlık Mod';
+            }
+        });
+
+        // Orijinal Cevap Anahtarı Verisi
+        const cevaplar = [
+            'E', 'C', 'E', 'C', 'D', 'D', 'E', 'A', 'E', 'B',
+            'B', 'E', 'A', 'B', 'B', 'D', 'E', 'D', 'B', 'E',
+            'C', 'B', 'D', 'B', 'A', 'E', 'D', 'A', 'A', 'D'
+        ];
+
+        const grid = document.getElementById('cardsGrid');
+
+        // 30 Kartın Ekrana Basılması
+        for (let num = 1; num <= 30; num++) {
+            const card = document.createElement('div');
+            card.className = 'matrix-card';
+            
+            const dinamikResimYolu = `image${num}.png`;
+            const dinamikVideoYolu = `video${num}.mp4`;
+            
+            card.innerHTML = `
+                <div class="meta-group">
+                    <div class="index-box">${num}</div>
+                    <div class="badge-premium">Cevap: ${cevaplar[num-1]}</div>
+                </div>
+                <div class="card-actions-wrapper">
+                    <button class="action-photo-btn" data-img-src="${dinamikResimYolu}" data-num="${num}">
+                        <i class="fa-regular fa-image"></i>
+                    </button>
+                    <button class="action-play-btn" data-video-src="${dinamikVideoYolu}" data-num="${num}">
+                        <i class="fa-solid fa-play"></i>
+                    </button>
+                </div>
+            `;
+            grid.appendChild(card);
+        }
+
+        // Element Seçicileri
+        const videoCinema = document.getElementById('videoCinema');
+        const photoCinema = document.getElementById('photoCinema');
+        const customVideoPlayer = document.getElementById('customVideoPlayer');
+        const questionImage = document.getElementById('questionImage');
+        const videoTitle = document.getElementById('videoTitle');
+        const photoTitle = document.getElementById('photoTitle');
+
+        // Tıklama Olay Yönetimi
+        grid.addEventListener('click', (e) => {
+            const playBtn = e.target.closest('.action-play-btn');
+            const photoBtn = e.target.closest('.action-photo-btn');
+            
+            // 1. Durum: Video Oynat Butonuna Basıldıysa
+            if (playBtn) {
+                // Mikro dönme ve büyüme animasyonu tetiklemesi
+                playBtn.classList.add('clicked-anim');
+                
+                const videoUrl = playBtn.getAttribute('data-video-src');
+                const sNum = playBtn.getAttribute('data-num');
+                
+                videoTitle.innerText = `Soru ${sNum} - Video Çözümü`;
+                customVideoPlayer.src = videoUrl;
+                
+                setTimeout(() => {
+                    videoCinema.classList.add('active');
+                    customVideoPlayer.play();
+                    playBtn.classList.remove('clicked-anim');
+                }, 150);
+
+            } 
+            // 2. Durum: Fotoğraf İkonuna Basıldıysa
+            else if (photoBtn) {
+                const imgUrl = photoBtn.getAttribute('data-img-src');
+                const sNum = photoBtn.getAttribute('data-num');
+                
+                photoTitle.innerText = `Soru ${sNum} - Soru Metni`;
+                questionImage.src = imgUrl;
+                photoCinema.classList.add('active');
+            }
+        });
+
+        // Modalları Kapatma Tetikleyicileri
+        document.getElementById('closeVideo').addEventListener('click', () => {
+            videoCinema.classList.remove('active');
+            customVideoPlayer.pause();
+            customVideoPlayer.src = "";
+        });
+
+        document.getElementById('closePhoto').addEventListener('click', () => {
+            photoCinema.classList.remove('active');
+            questionImage.src = "";
+        });
+
+        // Boşluğa Tıklayarak Kapatma
+        window.addEventListener('click', (e) => {
+            if (e.target === videoCinema) {
+                videoCinema.classList.remove('active');
+                customVideoPlayer.pause();
+                customVideoPlayer.src = "";
+            }
+            if (e.target === photoCinema) {
+                photoCinema.classList.remove('active');
+                questionImage.src = "";
+            }
+        });
+    </script>
+</body>
+</html>
