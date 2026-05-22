@@ -37,9 +37,9 @@
             --card-bg: rgba(15, 23, 42, 0.45);
             --card-border: rgba(51, 65, 85, 0.35);
             --nav-bg: rgba(3, 7, 18, 0.5);
-            --primary: #818cf8; /* Karanlık mod için yumuşatılmış mor */
+            --primary: #818cf8;
             --primary-glow: rgba(129, 140, 248, 0.5);
-            --accent: #c084fc; /* Karanlık mod parlak mor */
+            --accent: #c084fc;
             --badge-bg: rgba(255, 255, 255, 0.05);
             --badge-text: #f8fafc;
             --badge-border: rgba(255, 255, 255, 0.1);
@@ -53,8 +53,6 @@
             box-sizing: border-box;
             font-family: 'Plus Jakarta Sans', sans-serif;
             transition: background 0.4s ease, border-color 0.4s ease, color 0.3s ease;
-            
-            /* Mobil tarayıcılardaki mavi seçim kutusunu engeller */
             -webkit-tap-highlight-color: transparent !important;
             outline: none !important;
         }
@@ -81,12 +79,14 @@
             justify-content: space-between;
             align-items: center;
             box-shadow: var(--shadow-sm);
+            gap: 15px;
         }
 
         .brand-container {
             display: flex;
             align-items: center;
             gap: 14px;
+            margin-right: auto;
         }
 
         .school-logo-icon {
@@ -116,6 +116,47 @@
             font-weight: 800;
             letter-spacing: -0.5px;
             margin-top: -2px;
+        }
+
+        /* Sağ Buton Grubu */
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        /* YENİ: PDF İndirme Butonu Stili */
+        .pdf-download-btn {
+            background: linear-gradient(135deg, #7c3aed 0%, var(--primary) 100%);
+            color: #ffffff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 30px;
+            cursor: pointer;
+            font-weight: 700;
+            font-size: 0.85rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
+            box-shadow: 0 4px 15px rgba(124, 58, 237, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .pdf-download-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(124, 58, 237, 0.5);
+        }
+
+        .pdf-download-btn i {
+            animation: bounceIcon 2s infinite;
+        }
+
+        @keyframes bounceIcon {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-4px); }
+            60% { transform: translateY(-2px); }
         }
 
         .premium-theme-toggle {
@@ -236,11 +277,10 @@
             gap: 12px;
         }
 
-        /* GÜNCELLENDİ: Fotoğraf İkon Butonu - Mor Çizgili Tarz */
         .action-photo-btn {
             background: var(--badge-bg);
             border: 1px solid var(--card-border);
-            color: var(--primary); /* Mor renk tonu */
+            color: var(--primary);
             width: 44px;
             height: 44px;
             border-radius: 50%;
@@ -256,10 +296,9 @@
             transform: scale(1.1);
             background: var(--card-bg);
             border-color: var(--accent);
-            color: var(--accent); /* Üzerine gelince parlak mor */
+            color: var(--accent);
         }
 
-        /* GÜNCELLENDİ: Oynat (Video) Butonu - Mor Degradeli Premium Yapı */
         .action-play-btn {
             background: linear-gradient(135deg, var(--primary) 0%, #312e81 100%);
             border: none;
@@ -278,13 +317,11 @@
             transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), background 0.3s ease !important;
         }
 
-        /* Masaüstü Hover Etkisi - Büyüme ve Dönme Animasyonu */
         .action-play-btn:hover {
             transform: scale(1.18) rotate(15deg);
             background: linear-gradient(135deg, var(--accent) 0%, var(--primary) 100%);
         }
 
-        /* Dokunulduğunda Tetiklenen Aktif Animasyon Sınıfı */
         .action-play-btn.clicked-anim {
             transform: scale(1.25) rotate(20deg) !important;
             background: linear-gradient(135deg, var(--accent) 0%, var(--primary) 100%) !important;
@@ -320,6 +357,8 @@
             border-radius: 24px;
             overflow: hidden;
             box-shadow: 0 30px 60px -15px rgba(0,0,0,0.6);
+            display: flex;
+            flex-direction: column;
         }
 
         .cinema-header {
@@ -373,15 +412,51 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            background: #ffffff; /* Her zaman saf beyaz kalacak arka plan */
-            min-height: 300px;
+            background: #ffffff;
+            min-height: 350px;
         }
 
         .photo-screen img {
             max-width: 100%;
-            max-height: 70vh;
+            max-height: 65vh;
             border-radius: 12px;
             object-fit: contain;
+        }
+
+        /* YENİ: Navigasyon Alt Kontrol Alanı Stilleri */
+        .cinema-footer-nav {
+            padding: 14px 24px;
+            border-top: 1px solid var(--card-border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: var(--card-bg);
+        }
+
+        .nav-control-btn {
+            background: var(--bg-main);
+            border: 1px solid var(--card-border);
+            color: var(--text-main);
+            padding: 8px 18px;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 0.85rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.2s ease;
+        }
+
+        .nav-control-btn:hover {
+            background: var(--primary);
+            color: #ffffff;
+            border-color: var(--primary);
+        }
+
+        .nav-control-btn:disabled {
+            opacity: 0;
+            pointer-events: none; /* İlk ve son soruda buton kaybolur */
         }
     </style>
 </head>
@@ -397,10 +472,16 @@
                 <p>12-B // Ziada</p>
             </div>
         </div>
-        <button class="premium-theme-toggle" id="modeSwitch">
-            <i class="fa-solid fa-moon"></i>
-            <span id="modeLabel">Karanlık Mod</span>
-        </button>
+        <div class="header-actions">
+            <a href="fizik-yazili-sorulari.pdf" download class="pdf-download-btn">
+                <i class="fa-solid fa-file-pdf"></i>
+                <span>PDF İndir</span>
+            </a>
+            <button class="premium-theme-toggle" id="modeSwitch">
+                <i class="fa-solid fa-moon"></i>
+                <span id="modeLabel">Karanlık Mod</span>
+            </button>
+        </div>
     </header>
 
     <main>
@@ -422,6 +503,10 @@
             <div class="cinema-screen">
                 <video id="customVideoPlayer" controls controlsList="nodownload"></video>
             </div>
+            <div class="cinema-footer-nav">
+                <button class="nav-control-btn" id="prevVideoBtn"><i class="fa-solid fa-arrow-left"></i> Önceki Soru</button>
+                <button class="nav-control-btn" id="nextVideoBtn">Sonraki Soru <i class="fa-solid fa-arrow-right"></i></button>
+            </div>
         </div>
     </div>
 
@@ -433,6 +518,10 @@
             </div>
             <div class="photo-screen">
                 <img id="questionImage" src="" alt="Soru Fotoğrafı">
+            </div>
+            <div class="cinema-footer-nav">
+                <button class="nav-control-btn" id="prevPhotoBtn"><i class="fa-solid fa-arrow-left"></i> Önceki Soru</button>
+                <button class="nav-control-btn" id="nextPhotoBtn">Sonraki Soru <i class="fa-solid fa-arrow-right"></i></button>
             </div>
         </div>
     </div>
@@ -464,9 +553,11 @@
         ];
 
         const grid = document.getElementById('cardsGrid');
+        const TOPLAM_SORU = 30;
+        let aktifSoruNumarasi = 1; // Açık olan sorunun takibi için global değişken
 
         // 30 Kartın Ekrana Basılması
-        for (let num = 1; num <= 30; num++) {
+        for (let num = 1; num <= TOPLAM_SORU; num++) {
             const card = document.createElement('div');
             card.className = 'matrix-card';
             
@@ -498,38 +589,70 @@
         const videoTitle = document.getElementById('videoTitle');
         const photoTitle = document.getElementById('photoTitle');
 
-        // Tıklama Olay Yönetimi
+        // Navigasyon Buton Seçicileri
+        const prevVideoBtn = document.getElementById('prevVideoBtn');
+        const nextVideoBtn = document.getElementById('nextVideoBtn');
+        const prevPhotoBtn = document.getElementById('prevPhotoBtn');
+        const nextPhotoBtn = document.getElementById('nextPhotoBtn');
+
+        // Video Modalını Güncelleyen Fonksiyon
+        function videoModalYukle(num) {
+            aktifSoruNumarasi = parseInt(num);
+            videoTitle.innerText = `Soru ${aktifSoruNumarasi} - Video Çözümü`;
+            customVideoPlayer.src = `video${aktifSoruNumarasi}.mp4`;
+            customVideoPlayer.play();
+            
+            // İlk ve son sorularda butonların gizlenme kontrolü
+            prevVideoBtn.disabled = (aktifSoruNumarasi === 1);
+            nextVideoBtn.disabled = (aktifSoruNumarasi === TOPLAM_SORU);
+        }
+
+        // Fotoğraf Modalını Güncelleyen Fonksiyon
+        function photoModalYukle(num) {
+            aktifSoruNumarasi = parseInt(num);
+            photoTitle.innerText = `Soru-${aktifSoruNumarasi} `;
+            questionImage.src = `image${aktifSoruNumarasi}.png`;
+            
+            // İlk ve son sorularda butonların gizlenme kontrolü
+            prevPhotoBtn.disabled = (aktifSoruNumarasi === 1);
+            nextPhotoBtn.disabled = (aktifSoruNumarasi === TOPLAM_SORU);
+        }
+
+        // Ana Tıklama Olay Yönetimi
         grid.addEventListener('click', (e) => {
             const playBtn = e.target.closest('.action-play-btn');
             const photoBtn = e.target.closest('.action-photo-btn');
             
-            // 1. Durum: Video Oynat Butonuna Basıldıysa
             if (playBtn) {
-                // Mikro dönme ve büyüme animasyonu tetiklemesi
                 playBtn.classList.add('clicked-anim');
-                
-                const videoUrl = playBtn.getAttribute('data-video-src');
                 const sNum = playBtn.getAttribute('data-num');
-                
-                videoTitle.innerText = `Soru ${sNum} - Video Çözümü`;
-                customVideoPlayer.src = videoUrl;
                 
                 setTimeout(() => {
                     videoCinema.classList.add('active');
-                    customVideoPlayer.play();
+                    videoModalYukle(sNum);
                     playBtn.classList.remove('clicked-anim');
                 }, 150);
-
             } 
-            // 2. Durum: Fotoğraf İkonuna Basıldıysa
             else if (photoBtn) {
-                const imgUrl = photoBtn.getAttribute('data-img-src');
                 const sNum = photoBtn.getAttribute('data-num');
-                
-                photoTitle.innerText = `Soru-${sNum}`;
-                questionImage.src = imgUrl;
                 photoCinema.classList.add('active');
+                photoModalYukle(sNum);
             }
+        });
+
+        // YENİ: Alt Navigasyon Buton Dinleyicileri
+        prevVideoBtn.addEventListener('click', () => {
+            if (aktifSoruNumarasi > 1) videoModalYukle(aktifSoruNumarasi - 1);
+        });
+        nextVideoBtn.addEventListener('click', () => {
+            if (aktifSoruNumarasi < TOPLAM_SORU) videoModalYukle(aktifSoruNumarasi + 1);
+        });
+
+        prevPhotoBtn.addEventListener('click', () => {
+            if (aktifSoruNumarasi > 1) photoModalYukle(aktifSoruNumarasi - 1);
+        });
+        nextPhotoBtn.addEventListener('click', () => {
+            if (aktifSoruNumarasi < TOPLAM_SORU) photoModalYukle(aktifSoruNumarasi + 1);
         });
 
         // Modalları Kapatma Tetikleyicileri
