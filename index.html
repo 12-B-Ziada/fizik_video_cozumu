@@ -18,9 +18,9 @@
             --card-bg: rgba(255, 255, 255, 0.75);
             --card-border: rgba(255, 255, 255, 0.6);
             --nav-bg: rgba(255, 255, 255, 0.65);
-            --primary: #6366f1; /* Canlı Mor/İndigo */
+            --primary: #6366f1;
             --primary-glow: rgba(99, 102, 241, 0.4);
-            --accent: #a855f7; /* Tamamlayıcı Parlak Mor */
+            --accent: #a855f7;
             --badge-bg: #f1f5f9;
             --badge-text: #334155;
             --badge-border: rgba(51, 65, 85, 0.1);
@@ -65,7 +65,6 @@
             padding-bottom: 80px;
         }
 
-        /* Üst Menü */
         header {
             background: var(--nav-bg);
             backdrop-filter: var(--blur);
@@ -118,14 +117,12 @@
             margin-top: -2px;
         }
 
-        /* Sağ Buton Grubu */
         .header-actions {
             display: flex;
             align-items: center;
             gap: 12px;
         }
 
-        /* YENİ: PDF İndirme Butonu Stili */
         .pdf-download-btn {
             background: linear-gradient(135deg, #7c3aed 0%, var(--primary) 100%);
             color: #ffffff;
@@ -140,24 +137,9 @@
             gap: 8px;
             text-decoration: none;
             box-shadow: 0 4px 15px rgba(124, 58, 237, 0.3);
-            position: relative;
-            overflow: hidden;
         }
 
-        .pdf-download-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(124, 58, 237, 0.5);
-        }
-
-        .pdf-download-btn i {
-            animation: bounceIcon 2s infinite;
-        }
-
-        @keyframes bounceIcon {
-            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
-            40% { transform: translateY(-4px); }
-            60% { transform: translateY(-2px); }
-        }
+        .pdf-download-btn:hover { transform: translateY(-2px); }
 
         .premium-theme-toggle {
             background: var(--card-bg);
@@ -173,12 +155,8 @@
             gap: 8px;
         }
 
-        .premium-theme-toggle:hover {
-            transform: translateY(-2px);
-            border-color: var(--primary);
-        }
+        .premium-theme-toggle:hover { transform: translateY(-2px); border-color: var(--primary); }
 
-        /* Ana İçerik Alanı */
         main {
             max-width: 900px;
             margin: 50px auto;
@@ -190,24 +168,10 @@
             margin-bottom: 40px;
         }
 
-        .hero h1 {
-            font-size: 2.2rem;
-            font-weight: 800;
-            letter-spacing: -0.5px;
-            margin-bottom: 8px;
-        }
+        .hero h1 { font-size: 2.2rem; font-weight: 800; letter-spacing: -0.5px; margin-bottom: 8px; }
+        .hero p { color: var(--text-muted); font-size: 1.05rem; }
 
-        .hero p {
-            color: var(--text-muted);
-            font-size: 1.05rem;
-        }
-
-        /* Soru Kartları Listesi */
-        .matrix-container {
-            display: flex;
-            flex-direction: column;
-            gap: 14px;
-        }
+        .matrix-container { display: flex; flex-direction: column; gap: 14px; }
 
         .matrix-card {
             background: var(--card-bg);
@@ -224,249 +188,125 @@
         }
 
         .matrix-card::before {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 0;
-            height: 100%;
-            width: 4px;
-            background: linear-gradient(to bottom, var(--primary), var(--accent));
-            opacity: 0.6;
+            content: ''; position: absolute; left: 0; top: 0; height: 100%; width: 4px;
+            background: linear-gradient(to bottom, var(--primary), var(--accent)); opacity: 0.6;
         }
 
-        .matrix-card:hover {
-            border-color: var(--primary-glow);
-            box-shadow: var(--shadow-lg), 0 10px 25px -10px var(--primary-glow);
-        }
-
-        .meta-group {
-            display: flex;
-            align-items: center;
-            gap: 20px;
-        }
+        .meta-group { display: flex; align-items: center; gap: 15px; }
 
         .index-box {
-            font-family: 'Space Grotesk', sans-serif;
-            font-weight: 700;
-            font-size: 1.1rem;
-            color: var(--primary);
-            background: var(--bg-main);
-            width: 42px;
-            height: 42px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            border-radius: 10px;
+            font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 1.1rem;
+            color: var(--primary); background: var(--bg-main); width: 42px; height: 42px;
+            display: flex; justify-content: center; align-items: center; border-radius: 10px;
             border: 1px solid var(--card-border);
         }
 
         .badge-premium {
-            background: var(--badge-bg);
-            color: var(--badge-text);
-            border: 1px solid var(--badge-border);
-            padding: 6px 14px;
-            border-radius: 10px;
-            font-weight: 700;
-            font-size: 0.85rem;
+            background: var(--badge-bg); color: var(--badge-text); border: 1px solid var(--badge-border);
+            padding: 6px 14px; border-radius: 10px; font-weight: 700; font-size: 0.85rem;
         }
 
-        /* Buton Grubu */
-        .card-actions-wrapper {
-            display: flex;
-            align-items: center;
-            gap: 12px;
+        /* Kullanıcının kendi işaretlediği şıkkı gösteren küçük rozet */
+        .user-choice-badge {
+            background: rgba(168, 85, 247, 0.15); color: var(--accent);
+            padding: 6px 12px; border-radius: 10px; font-weight: 800; font-size: 0.85rem;
+            border: 1px solid rgba(168, 85, 247, 0.3); display: none;
         }
+
+        .card-actions-wrapper { display: flex; align-items: center; gap: 12px; }
 
         .action-photo-btn {
-            background: var(--badge-bg);
-            border: 1px solid var(--card-border);
-            color: var(--primary);
-            width: 44px;
-            height: 44px;
-            border-radius: 50%;
-            cursor: pointer;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-size: 0.95rem;
-            transition: transform 0.2s ease, background 0.2s ease, border-color 0.2s ease;
+            background: var(--badge-bg); border: 1px solid var(--card-border); color: var(--primary);
+            width: 44px; height: 44px; border-radius: 50%; cursor: pointer;
+            display: flex; justify-content: center; align-items: center; font-size: 0.95rem;
         }
-
-        .action-photo-btn:hover {
-            transform: scale(1.1);
-            background: var(--card-bg);
-            border-color: var(--accent);
-            color: var(--accent);
-        }
+        .action-photo-btn:hover { transform: scale(1.1); color: var(--accent); border-color: var(--accent); }
 
         .action-play-btn {
-            background: linear-gradient(135deg, var(--primary) 0%, #312e81 100%);
-            border: none;
-            color: #ffffff;
-            width: 44px;
-            height: 44px;
-            border-radius: 50%;
-            cursor: pointer;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-size: 0.95rem;
-            box-shadow: 0 8px 16px -4px var(--primary-glow);
-            position: relative;
-            z-index: 10;
-            transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), background 0.3s ease !important;
+            background: linear-gradient(135deg, var(--primary) 0%, #312e81 100%); border: none; color: #ffffff;
+            width: 44px; height: 44px; border-radius: 50%; cursor: pointer;
+            display: flex; justify-content: center; align-items: center; font-size: 0.95rem;
+            box-shadow: 0 8px 16px -4px var(--primary-glow); transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
         }
-
-        .action-play-btn:hover {
-            transform: scale(1.18) rotate(15deg);
-            background: linear-gradient(135deg, var(--accent) 0%, var(--primary) 100%);
-        }
-
-        .action-play-btn.clicked-anim {
-            transform: scale(1.25) rotate(20deg) !important;
-            background: linear-gradient(135deg, var(--accent) 0%, var(--primary) 100%) !important;
-        }
+        .action-play-btn:hover { transform: scale(1.18) rotate(15deg); background: linear-gradient(135deg, var(--accent) 0%, var(--primary) 100%); }
+        .action-play-btn.clicked-anim { transform: scale(1.25) rotate(20deg) !important; }
 
         /* Modallar */
         .cinema-modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(2, 6, 23, 0.8);
-            backdrop-filter: blur(12px);
-            z-index: 2000;
-            justify-content: center;
-            align-items: center;
-            opacity: 0;
-            transition: opacity 0.3s ease;
+            display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(2, 6, 23, 0.8); backdrop-filter: blur(12px); z-index: 2000;
+            justify-content: center; align-items: center; opacity: 0; transition: opacity 0.3s ease;
         }
-
-        .cinema-modal.active {
-            display: flex;
-            opacity: 1;
-        }
+        .cinema-modal.active { display: flex; opacity: 1; }
 
         .cinema-body {
-            background: var(--bg-main);
-            border: 1px solid var(--card-border);
-            width: 95%;
-            max-width: 800px;
-            border-radius: 24px;
-            overflow: hidden;
-            box-shadow: 0 30px 60px -15px rgba(0,0,0,0.6);
-            display: flex;
-            flex-direction: column;
+            background: var(--bg-main); border: 1px solid var(--card-border);
+            width: 95%; max-width: 850px; border-radius: 24px; overflow: hidden;
+            box-shadow: 0 30px 60px -15px rgba(0,0,0,0.6); display: flex; flex-direction: column;
         }
 
-        .cinema-header {
-            padding: 18px 24px;
-            border-bottom: 1px solid var(--card-border);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+        .cinema-header { padding: 16px 24px; border-bottom: 1px solid var(--card-border); display: flex; justify-content: space-between; align-items: center; }
+        .cinema-header h3 { font-weight: 700; font-size: 1.15rem; }
+        
+        /* Çizim ve Zoom Araç Çubuğu */
+        .toolbar-wrapper { display: flex; align-items: center; gap: 8px; margin-right: 16px; }
+        .tool-btn {
+            background: var(--badge-bg); border: 1px solid var(--card-border); color: var(--text-main);
+            width: 36px; height: 36px; border-radius: 8px; cursor: pointer; display: flex; justify-content: center; align-items: center; font-size: 0.9rem;
         }
-
-        .cinema-header h3 {
-            font-weight: 700;
-            font-size: 1.15rem;
-        }
+        .tool-btn.active { background: var(--primary); color: #fff; border-color: var(--primary); }
+        .tool-btn:hover { transform: translateY(-1px); }
 
         .close-circle {
-            background: var(--card-bg);
-            border: 1px solid var(--card-border);
-            color: var(--text-main);
-            width: 38px;
-            height: 38px;
-            border-radius: 50%;
-            cursor: pointer;
-            display: flex;
-            justify-content: center;
-            align-items: center;
+            background: var(--card-bg); border: 1px solid var(--card-border); color: var(--text-main);
+            width: 38px; height: 38px; border-radius: 50%; cursor: pointer; display: flex; justify-content: center; align-items: center;
         }
+        .close-circle:hover { background: #f43f5e; color: #fff; border-color: #f43f5e; }
 
-        .close-circle:hover {
-            background: #f43f5e;
-            color: #fff;
-            border-color: #f43f5e;
-        }
+        .cinema-screen { position: relative; padding-bottom: 56.25%; height: 0; background: #000; }
+        .cinema-screen video { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; outline: none; }
 
-        .cinema-screen {
-            position: relative;
-            padding-bottom: 56.25%;
-            height: 0;
-            background: #000;
-        }
-
-        .cinema-screen video {
-            position: absolute;
-            top: 0; left: 0; width: 100%; height: 100%;
-            border: none;
-            outline: none;
-        }
-
+        /* Gelişmiş Kanvaslı Fotoğraf Ekranı */
         .photo-screen {
-            padding: 20px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background: #ffffff;
-            min-height: 350px;
+            padding: 20px; display: flex; justify-content: center; align-items: center;
+            background: #ffffff; min-height: 380px; position: relative; overflow: auto;
         }
+        .canvas-container { position: relative; max-width: 100%; transition: transform 0.2s ease; transform-origin: center center; }
+        .canvas-container img { max-width: 100%; max-height: 60vh; display: block; object-fit: contain; pointer-events: none; }
+        .drawing-canvas { position: absolute; top: 0; left: 0; width: 100%; height: 100%; cursor: crosshair; }
 
-        .photo-screen img {
-            max-width: 100%;
-            max-height: 65vh;
-            border-radius: 12px;
-            object-fit: contain;
+        /* Sınav Şıkları Alanı */
+        .exam-options-container {
+            display: flex; justify-content: center; gap: 12px; padding: 16px 24px;
+            background: var(--badge-bg); border-top: 1px solid var(--card-border);
         }
+        .option-btn {
+            width: 46px; height: 46px; border-radius: 50%; border: 2px solid var(--card-border);
+            background: var(--card-bg); color: var(--text-main); font-weight: 700; font-size: 1rem;
+            cursor: pointer; display: flex justify-content: center; align-items: center;
+        }
+        .option-btn:hover { border-color: var(--primary); color: var(--primary); }
+        .option-btn.selected { background: var(--primary); border-color: var(--primary); color: #fff; box-shadow: 0 4px 12px var(--primary-glow); }
 
-        /* YENİ: Navigasyon Alt Kontrol Alanı Stilleri */
         .cinema-footer-nav {
-            padding: 14px 24px;
-            border-top: 1px solid var(--card-border);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background: var(--card-bg);
+            padding: 14px 24px; border-top: 1px solid var(--card-border);
+            display: flex; justify-content: space-between; align-items: center; background: var(--card-bg);
         }
 
         .nav-control-btn {
-            background: var(--bg-main);
-            border: 1px solid var(--card-border);
-            color: var(--text-main);
-            padding: 8px 18px;
-            border-radius: 12px;
-            font-weight: 600;
-            font-size: 0.85rem;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            transition: all 0.2s ease;
+            background: var(--bg-main); border: 1px solid var(--card-border); color: var(--text-main);
+            padding: 8px 18px; border-radius: 12px; font-weight: 600; font-size: 0.85rem; cursor: pointer;
+            display: flex; align-items: center; gap: 8px;
         }
-
-        .nav-control-btn:hover {
-            background: var(--primary);
-            color: #ffffff;
-            border-color: var(--primary);
-        }
-
-        .nav-control-btn:disabled {
-            opacity: 0;
-            pointer-events: none; /* İlk ve son soruda buton kaybolur */
-        }
+        .nav-control-btn:hover { background: var(--primary); color: #ffffff; border-color: var(--primary); }
+        .nav-control-btn:disabled { opacity: 0; pointer-events: none; }
     </style>
 </head>
 <body>
 
     <header>
         <div class="brand-container">
-            <div class="school-logo-icon">
-                <i class="fa-solid fa-graduation-cap"></i>
-            </div>
+            <div class="school-logo-icon"><i class="fa-solid fa-graduation-cap"></i></div>
             <div class="brand-text">
                 <h2>Salim Yılmaz Anadolu Lisesi</h2>
                 <p>12-B // Ziada</p>
@@ -474,12 +314,10 @@
         </div>
         <div class="header-actions">
             <a href="fizik-yazili-sorulari.pdf" download class="pdf-download-btn">
-                <i class="fa-solid fa-file-pdf"></i>
-                <span>PDF İndir</span>
+                <i class="fa-solid fa-file-pdf"></i> <span>PDF İndir</span>
             </a>
             <button class="premium-theme-toggle" id="modeSwitch">
-                <i class="fa-solid fa-moon"></i>
-                <span id="modeLabel">Karanlık Mod</span>
+                <i class="fa-solid fa-moon"></i> <span id="modeLabel">Karanlık Mod</span>
             </button>
         </div>
     </header>
@@ -487,7 +325,7 @@
     <main>
         <div class="hero">
             <h1>Fizik 2. Dönem 2. Yazılı Soruları</h1>
-            <p>Sorular ve Video Çözümleri</p>
+            <p>İnteraktif Sınav Modu & Görüntülü Çözümler</p>
         </div>
         
         <div class="matrix-container" id="cardsGrid">
@@ -514,11 +352,34 @@
         <div class="cinema-body">
             <div class="cinema-header">
                 <h3 id="photoTitle">Soru Görseli</h3>
-                <button class="close-circle" id="closePhoto"><i class="fa-solid fa-xmark"></i></button>
+                <div style="display: flex; align-items: center;">
+                    <div class="toolbar-wrapper">
+                        <button class="tool-btn active" id="toolPen" title="Kalem"><i class="fa-solid fa-pen"></i></button>
+                        <button class="tool-btn" id="toolEraser" title="Silgi"><i class="fa-solid fa-eraser"></i></button>
+                        <button class="tool-btn" id="toolClear" title="Temizle"><i class="fa-solid fa-trash-can"></i></button>
+                        <div style="width: 1px; height: 24px; background: var(--card-border); margin: 0 4px;"></div>
+                        <button class="tool-btn" id="zoomIn" title="Büyüt"><i class="fa-solid fa-magnifying-glass-plus"></i></button>
+                        <button class="tool-btn" id="zoomOut" title="Küçült"><i class="fa-solid fa-magnifying-glass-minus"></i></button>
+                    </div>
+                    <button class="close-circle" id="closePhoto"><i class="fa-solid fa-xmark"></i></button>
+                </div>
             </div>
+            
             <div class="photo-screen">
-                <img id="questionImage" src="" alt="Soru Fotoğrafı">
+                <div class="canvas-container" id="zoomContainer">
+                    <img id="questionImage" src="" alt="Soru Fotoğrafı">
+                    <canvas class="drawing-canvas" id="paintCanvas"></canvas>
+                </div>
             </div>
+
+            <div class="exam-options-container" id="optionsGroup">
+                <button class="option-btn" data-opt="A">A</button>
+                <button class="option-btn" data-opt="B">B</button>
+                <button class="option-btn" data-opt="C">C</button>
+                <button class="option-btn" data-opt="D">D</button>
+                <button class="option-btn" data-opt="E">E</button>
+            </div>
+
             <div class="cinema-footer-nav">
                 <button class="nav-control-btn" id="prevPhotoBtn"><i class="fa-solid fa-arrow-left"></i> Önceki Soru</button>
                 <button class="nav-control-btn" id="nextPhotoBtn">Sonraki Soru <i class="fa-solid fa-arrow-right"></i></button>
@@ -527,7 +388,7 @@
     </div>
 
     <script>
-        // Tema Ayarı Yönetimi
+        // Tema Yönetimi
         const modeSwitch = document.getElementById('modeSwitch');
         const modeIcon = modeSwitch.querySelector('i');
         const modeLabel = document.getElementById('modeLabel');
@@ -536,89 +397,201 @@
             const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
             if (isDark) {
                 document.documentElement.removeAttribute('data-theme');
-                modeIcon.className = 'fa-solid fa-moon';
-                modeLabel.innerText = 'Karanlık Mod';
+                modeIcon.className = 'fa-solid fa-moon'; modeLabel.innerText = 'Karanlık Mod';
             } else {
                 document.documentElement.setAttribute('data-theme', 'dark');
-                modeIcon.className = 'fa-solid fa-sun';
-                modeLabel.innerText = 'Aydınlık Mod';
+                modeIcon.className = 'fa-solid fa-sun'; modeLabel.innerText = 'Aydınlık Mod';
             }
         });
 
-        // Orijinal Cevap Anahtarı Verisi
-        const cevaplar = [
-            'E', 'C', 'E', 'C', 'D', 'D', 'E', 'A', 'E', 'B',
-            'B', 'E', 'A', 'B', 'B', 'D', 'E', 'D', 'B', 'E',
-            'C', 'B', 'D', 'B', 'A', 'E', 'D', 'A', 'A', 'D'
-        ];
+        // Cevap Anahtarı ve Kullanıcı Seçimleri Kayıt Dizisi
+        const cevaplar = ['E', 'C', 'E', 'C', 'D', 'D', 'E', 'A', 'E', 'B', 'B', 'E', 'A', 'B', 'B', 'D', 'E', 'D', 'B', 'E', 'C', 'B', 'D', 'B', 'A', 'E', 'D', 'A', 'A', 'D'];
+        const ogrenciSecimleri = new Array(30).fill(null);
 
         const grid = document.getElementById('cardsGrid');
         const TOPLAM_SORU = 30;
-        let aktifSoruNumarasi = 1; // Açık olan sorunun takibi için global değişken
+        let aktifSoruNumarasi = 1;
+        let mevcutZoom = 1;
 
-        // 30 Kartın Ekrana Basılması
+        // Çizim Değişkenleri
+        const canvas = document.getElementById('paintCanvas');
+        const ctx = canvas.getContext('2d');
+        let cizimVar = false;
+        let mevcutAlet = 'pen'; // pen veya eraser
+
+        // Kart yapılarının basılması
         for (let num = 1; num <= TOPLAM_SORU; num++) {
             const card = document.createElement('div');
             card.className = 'matrix-card';
-            
-            const dinamikResimYolu = `image${num}.png`;
-            const dinamikVideoYolu = `video${num}.mp4`;
+            card.id = `card-id-${num}`;
             
             card.innerHTML = `
                 <div class="meta-group">
                     <div class="index-box">${num}</div>
                     <div class="badge-premium">Cevap: ${cevaplar[num-1]}</div>
+                    <div class="user-choice-badge" id="user-badge-${num}">Senin Şıkkın: </div>
                 </div>
                 <div class="card-actions-wrapper">
-                    <button class="action-photo-btn" data-img-src="${dinamikResimYolu}" data-num="${num}">
-                        <i class="fa-regular fa-image"></i>
-                    </button>
-                    <button class="action-play-btn" data-video-src="${dinamikVideoYolu}" data-num="${num}">
-                        <i class="fa-solid fa-play"></i>
-                    </button>
+                    <button class="action-photo-btn" data-num="${num}"><i class="fa-regular fa-image"></i></button>
+                    <button class="action-play-btn" data-num="${num}"><i class="fa-solid fa-play"></i></button>
                 </div>
             `;
             grid.appendChild(card);
         }
 
-        // Element Seçicileri
+        // Seçiciler
         const videoCinema = document.getElementById('videoCinema');
         const photoCinema = document.getElementById('photoCinema');
         const customVideoPlayer = document.getElementById('customVideoPlayer');
         const questionImage = document.getElementById('questionImage');
-        const videoTitle = document.getElementById('videoTitle');
-        const photoTitle = document.getElementById('photoTitle');
+        const zoomContainer = document.getElementById('zoomContainer');
+        const optionsGroup = document.getElementById('optionsGroup');
 
-        // Navigasyon Buton Seçicileri
-        const prevVideoBtn = document.getElementById('prevVideoBtn');
-        const nextVideoBtn = document.getElementById('nextVideoBtn');
-        const prevPhotoBtn = document.getElementById('prevPhotoBtn');
-        const nextPhotoBtn = document.getElementById('nextPhotoBtn');
-
-        // Video Modalını Güncelleyen Fonksiyon
+        // Modal Yükleme Fonksiyonları
         function videoModalYukle(num) {
             aktifSoruNumarasi = parseInt(num);
-            videoTitle.innerText = `Soru ${aktifSoruNumarasi} - Video Çözümü`;
+            document.getElementById('videoTitle').innerText = `Soru ${aktifSoruNumarasi} - Video Çözümü`;
             customVideoPlayer.src = `video${aktifSoruNumarasi}.mp4`;
             customVideoPlayer.play();
-            
-            // İlk ve son sorularda butonların gizlenme kontrolü
-            prevVideoBtn.disabled = (aktifSoruNumarasi === 1);
-            nextVideoBtn.disabled = (aktifSoruNumarasi === TOPLAM_SORU);
+            document.getElementById('prevVideoBtn').disabled = (aktifSoruNumarasi === 1);
+            document.getElementById('nextVideoBtn').disabled = (aktifSoruNumarasi === TOPLAM_SORU);
         }
 
-        // Fotoğraf Modalını Güncelleyen Fonksiyon
         function photoModalYukle(num) {
             aktifSoruNumarasi = parseInt(num);
-            photoTitle.innerText = `Soru-${aktifSoruNumarasi} `;
-            questionImage.src = `image${aktifSoruNumarasi}.png`;
+            document.getElementById('photoTitle').innerText = `Soru ${aktifSoruNumarasi} - İnteraktif Sınav Çözümü`;
             
-            // İlk ve son sorularda butonların gizlenme kontrolü
-            prevPhotoBtn.disabled = (aktifSoruNumarasi === 1);
-            nextPhotoBtn.disabled = (aktifSoruNumarasi === TOPLAM_SORU);
+            // Zoom sıfırlama
+            mevcutZoom = 1;
+            zoomContainer.style.transform = `scale(${mevcutZoom})`;
+            
+            // Resmi yükle ve yüklendikten sonra kanvas boyutunu ayarla
+            questionImage.src = `image${aktifSoruNumarasi}.png`;
+            questionImage.onload = () => { canvasBoyutlandir(); };
+
+            // Şık butonlarının aktifliğini tazeleme
+            document.querySelectorAll('.option-btn').forEach(btn => {
+                btn.classList.remove('selected');
+                if(btn.getAttribute('data-opt') === ogrenciSecimleri[aktifSoruNumarasi - 1]) {
+                    btn.classList.add('selected');
+                }
+            });
+
+            document.getElementById('prevPhotoBtn').disabled = (aktifSoruNumarasi === 1);
+            document.getElementById('nextPhotoBtn').disabled = (aktifSoruNumarasi === TOPLAM_SORU);
         }
 
-        // Ana Tıklama Olay Yönetimi
+        // Kanvas Boyutunu Resme Eşitleyen Fonksiyon
+        function canvasBoyutlandir() {
+            canvas.width = questionImage.clientWidth;
+            canvas.height = questionImage.clientHeight;
+            ctx.lineCap = 'round';
+            ctx.lineWidth = 3;
+        }
+
+        // Çizim Olay Dinleyicileri
+        function koordinatAl(e) {
+            const rect = canvas.getBoundingClientRect();
+            // Zoom oranına bölerek koordinat kaymasını engelliyoruz
+            return {
+                x: (e.clientX - rect.left) / mevcutZoom,
+                y: (e.clientY - rect.top) / mevcutZoom
+            };
+        }
+
+        canvas.addEventListener('mousedown', (e) => {
+            cizimVar = true;
+            const k = koordinatAl(e);
+            ctx.beginPath();
+            ctx.moveTo(k.x, k.y);
+        });
+
+        canvas.addEventListener('mousemove', (e) => {
+            if (!cizimVar) return;
+            const k = koordinatAl(e);
+            
+            if (mevcutAlet === 'pen') {
+                ctx.globalCompositeOperation = 'source-over';
+                ctx.strokeStyle = '#a855f7'; // Şık Mor Çizim Rengi
+                ctx.lineWidth = 3;
+            } else {
+                ctx.globalCompositeOperation = 'destination-out'; // Silgi Modu
+                ctx.lineWidth = 20;
+            }
+            ctx.lineTo(k.x, k.y);
+            ctx.stroke();
+        });
+
+        canvas.addEventListener('mouseup', () => cizimVar = false);
+        canvas.addEventListener('mouseleave', () => cizimVar = false);
+
+        // Dokunmatik Cihazlar İçin Çizim Desteği (Mobil)
+        canvas.addEventListener('touchstart', (e) => {
+            cizimVar = true;
+            const t = e.touches[0];
+            const k = koordinatAl(t);
+            ctx.beginPath();
+            ctx.moveTo(k.x, k.y);
+        });
+        canvas.addEventListener('touchmove', (e) => {
+            if (!cizimVar) return;
+            e.preventDefault();
+            const t = e.touches[0];
+            const k = koordinatAl(t);
+            if (mevcutAlet === 'pen') {
+                ctx.globalCompositeOperation = 'source-over';
+                ctx.strokeStyle = '#a855f7';
+                ctx.lineWidth = 3;
+            } else {
+                ctx.globalCompositeOperation = 'destination-out';
+                ctx.lineWidth = 20;
+            }
+            ctx.lineTo(k.x, k.y);
+            ctx.stroke();
+        });
+        canvas.addEventListener('touchend', () => cizimVar = false);
+
+        // Araç Çubuğu Kontrolleri
+        document.getElementById('toolPen').addEventListener('click', () => {
+            mevcutAlet = 'pen';
+            document.getElementById('toolPen').classList.add('active');
+            document.getElementById('toolEraser').classList.remove('active');
+        });
+        document.getElementById('toolEraser').addEventListener('click', () => {
+            mevcutAlet = 'eraser';
+            document.getElementById('toolEraser').classList.add('active');
+            document.getElementById('toolPen').classList.remove('active');
+        });
+        document.getElementById('toolClear').addEventListener('click', () => {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+        });
+
+        // Yakınlaştırma (Zoom) Ayarları
+        document.getElementById('zoomIn').addEventListener('click', () => {
+            if (mevcutZoom < 2.5) { mevcutZoom += 0.2; zoomContainer.style.transform = `scale(${mevcutZoom})`; }
+        });
+        document.getElementById('zoomOut').addEventListener('click', () => {
+            if (mevcutZoom > 0.6) { mevcutZoom -= 0.2; zoomContainer.style.transform = `scale(${mevcutZoom})`; }
+        });
+
+        // Şık İşaretleme Sistemi
+        optionsGroup.addEventListener('click', (e) => {
+            const btn = e.target.closest('.option-btn');
+            if (!btn) return;
+            
+            document.querySelectorAll('.option-btn').forEach(b => b.classList.remove('selected'));
+            btn.classList.add('selected');
+            
+            const secilenSik = btn.getAttribute('data-opt');
+            ogrenciSecimleri[aktifSoruNumarasi - 1] = secilenSik;
+
+            // Ana sayfadaki karta şık rozetini işleme
+            const badge = document.getElementById(`user-badge-${aktifSoruNumarasi}`);
+            badge.innerText = `Senin Şıkkın: ${secilenSik}`;
+            badge.style.display = 'inline-block';
+        });
+
+        // Ana Izgara Tıklama Dinleyicileri
         grid.addEventListener('click', (e) => {
             const playBtn = e.target.closest('.action-play-btn');
             const photoBtn = e.target.closest('.action-photo-btn');
@@ -626,7 +599,6 @@
             if (playBtn) {
                 playBtn.classList.add('clicked-anim');
                 const sNum = playBtn.getAttribute('data-num');
-                
                 setTimeout(() => {
                     videoCinema.classList.add('active');
                     videoModalYukle(sNum);
@@ -640,44 +612,23 @@
             }
         });
 
-        // YENİ: Alt Navigasyon Buton Dinleyicileri
-        prevVideoBtn.addEventListener('click', () => {
-            if (aktifSoruNumarasi > 1) videoModalYukle(aktifSoruNumarasi - 1);
-        });
-        nextVideoBtn.addEventListener('click', () => {
-            if (aktifSoruNumarasi < TOPLAM_SORU) videoModalYukle(aktifSoruNumarasi + 1);
-        });
+        // Önceki - Sonraki Navigasyonları
+        document.getElementById('prevVideoBtn').addEventListener('click', () => { if (aktifSoruNumarasi > 1) videoModalYukle(aktifSoruNumarasi - 1); });
+        document.getElementById('nextVideoBtn').addEventListener('click', () => { if (aktifSoruNumarasi < TOPLAM_SORU) videoModalYukle(aktifSoruNumarasi + 1); });
+        document.getElementById('prevPhotoBtn').addEventListener('click', () => { if (aktifSoruNumarasi > 1) photoModalYukle(aktifSoruNumarasi - 1); });
+        document.getElementById('nextPhotoBtn').addEventListener('click', () => { if (aktifSoruNumarasi < TOPLAM_SORU) photoModalYukle(aktifSoruNumarasi + 1); });
 
-        prevPhotoBtn.addEventListener('click', () => {
-            if (aktifSoruNumarasi > 1) photoModalYukle(aktifSoruNumarasi - 1);
-        });
-        nextPhotoBtn.addEventListener('click', () => {
-            if (aktifSoruNumarasi < TOPLAM_SORU) photoModalYukle(aktifSoruNumarasi + 1);
-        });
-
-        // Modalları Kapatma Tetikleyicileri
+        // Kapatma Mekanizmaları
         document.getElementById('closeVideo').addEventListener('click', () => {
-            videoCinema.classList.remove('active');
-            customVideoPlayer.pause();
-            customVideoPlayer.src = "";
+            videoCinema.classList.remove('active'); customVideoPlayer.pause(); customVideoPlayer.src = "";
         });
-
         document.getElementById('closePhoto').addEventListener('click', () => {
-            photoCinema.classList.remove('active');
-            questionImage.src = "";
+            photoCinema.classList.remove('active'); questionImage.src = "";
         });
 
-        // Boşluğa Tıklayarak Kapatma
         window.addEventListener('click', (e) => {
-            if (e.target === videoCinema) {
-                videoCinema.classList.remove('active');
-                customVideoPlayer.pause();
-                customVideoPlayer.src = "";
-            }
-            if (e.target === photoCinema) {
-                photoCinema.classList.remove('active');
-                questionImage.src = "";
-            }
+            if (e.target === videoCinema) { videoCinema.classList.remove('active'); customVideoPlayer.pause(); customVideoPlayer.src = ""; }
+            if (e.target === photoCinema) { photoCinema.classList.remove('active'); questionImage.src = ""; }
         });
     </script>
 </body>
