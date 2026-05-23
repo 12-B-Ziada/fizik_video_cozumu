@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Salim Yılmaz Anadolu Lisesi - Fizik Yazılısı</title>
+    <title>Salim Yılmaz Anadolu Lisesi - Fizik Sınavı</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -15,621 +15,742 @@
             --bg-gradient: radial-gradient(circle at top left, #f1f5f9 0%, #e2e8f0 100%);
             --text-main: #0f172a;
             --text-muted: #475569;
-            --card-bg: rgba(255, 255, 255, 0.75);
-            --card-border: rgba(255, 255, 255, 0.6);
-            --nav-bg: rgba(255, 255, 255, 0.65);
+            --card-bg: rgba(255, 255, 255, 0.9);
+            --card-border: rgba(226, 232, 240, 0.8);
+            --nav-bg: rgba(255, 255, 255, 0.75);
             --primary: #6366f1;
-            --primary-glow: rgba(99, 102, 241, 0.4);
+            --primary-glow: rgba(99, 102, 241, 0.3);
             --accent: #a855f7;
+            --accent-glow: rgba(168, 85, 247, 0.3);
+            --success: #10b981;
+            --danger: #ef4444;
             --badge-bg: #f1f5f9;
-            --badge-text: #334155;
-            --badge-border: rgba(51, 65, 85, 0.1);
             --blur: blur(20px);
-            --shadow-sm: 0 10px 30px -10px rgba(99, 102, 241, 0.05);
             --shadow-lg: 0 20px 40px -15px rgba(15, 23, 42, 0.08);
         }
 
         [data-theme="dark"] {
-            --bg-main: #030712;
-            --bg-gradient: radial-gradient(circle at top right, #0b1528 0%, #030712 100%);
+            --bg-main: #090d16;
+            --bg-gradient: radial-gradient(circle at top right, #0f172a 0%, #090d16 100%);
             --text-main: #f8fafc;
             --text-muted: #94a3b8;
-            --card-bg: rgba(15, 23, 42, 0.45);
-            --card-border: rgba(51, 65, 85, 0.35);
-            --nav-bg: rgba(3, 7, 18, 0.5);
+            --card-bg: rgba(30, 41, 59, 0.7);
+            --card-border: rgba(51, 65, 85, 0.5);
+            --nav-bg: rgba(9, 13, 22, 0.8);
             --primary: #818cf8;
-            --primary-glow: rgba(129, 140, 248, 0.5);
+            --primary-glow: rgba(129, 140, 248, 0.4);
             --accent: #c084fc;
-            --badge-bg: rgba(255, 255, 255, 0.05);
-            --badge-text: #f8fafc;
-            --badge-border: rgba(255, 255, 255, 0.1);
-            --shadow-sm: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
-            --shadow-lg: 0 25px 60px -15px rgba(0, 0, 0, 0.7);
+            --accent-glow: rgba(192, 132, 252, 0.4);
+            --badge-bg: #1e293b;
+            --shadow-lg: 0 25px 60px -15px rgba(0, 0, 0, 0.5);
         }
 
         * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            transition: background 0.4s ease, border-color 0.4s ease, color 0.3s ease;
-            -webkit-tap-highlight-color: transparent !important;
-            outline: none !important;
-        }
+    margin: 0; padding: 0; box-sizing: border-box;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    transition: background 0.3s ease, border-color 0.3s ease, color 0.2s ease;
+    -webkit-tap-highlight-color: transparent !important;
+    
+    /* Kopyalama ve Seçmeyi Engelleyen Kodlar */
+    user-select: none;
+    -webkit-user-select: none; /* Safari için */
+    -ms-user-select: none;     /* Eski IE/Edge için */
+}
 
         body {
-            background: var(--bg-main);
-            background-image: var(--bg-gradient);
-            color: var(--text-main);
-            min-height: 100vh;
-            padding-bottom: 80px;
+            background: var(--bg-main); background-image: var(--bg-gradient);
+            color: var(--text-main); min-height: 100vh; padding-bottom: 60px;
         }
 
         header {
-            background: var(--nav-bg);
-            backdrop-filter: var(--blur);
-            -webkit-backdrop-filter: var(--blur);
-            border-bottom: 1px solid var(--card-border);
-            padding: 16px 5%;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            box-shadow: var(--shadow-sm);
-            gap: 15px;
+            background: var(--nav-bg); backdrop-filter: var(--blur); -webkit-backdrop-filter: var(--blur);
+            border-bottom: 1px solid var(--card-border); padding: 14px 5%;
+            position: sticky; top: 0; z-index: 1000;
+            display: flex; justify-content: space-between; align-items: center; box-shadow: 0 4px 20px rgba(0,0,0,0.02);
         }
 
-        .brand-container {
-            display: flex;
-            align-items: center;
-            gap: 14px;
-            margin-right: auto;
-        }
-
+        .brand-container { display: flex; align-items: center; gap: 12px; cursor: pointer; }
         .school-logo-icon {
-            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
-            color: #fff;
-            width: 44px;
-            height: 44px;
-            border-radius: 12px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-size: 1.3rem;
-            box-shadow: 0 8px 20px -4px var(--primary-glow);
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%); color: #fff;
+            width: 40px; height: 40px; border-radius: 10px; display: flex; justify-content: center; align-items: center;
+            font-size: 1.1rem; box-shadow: 0 8px 16px -4px var(--primary-glow);
         }
-
-        .brand-text h2 {
-            font-size: 0.95rem;
-            font-weight: 600;
-            color: var(--text-muted);
-            letter-spacing: -0.3px;
-        }
-
-        .brand-text p {
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: 1.3rem;
-            color: var(--primary);
-            font-weight: 800;
-            letter-spacing: -0.5px;
-            margin-top: -2px;
-        }
-
-        .header-actions {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-
-        .pdf-download-btn {
-            background: linear-gradient(135deg, #7c3aed 0%, var(--primary) 100%);
-            color: #ffffff;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 30px;
-            cursor: pointer;
-            font-weight: 700;
-            font-size: 0.85rem;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            text-decoration: none;
-            box-shadow: 0 4px 15px rgba(124, 58, 237, 0.3);
-        }
-
-        .pdf-download-btn:hover { transform: translateY(-2px); }
+        .brand-text h2 { font-size: 0.9rem; font-weight: 600; color: var(--text-muted); }
+        .brand-text p { font-family: 'Space Grotesk', sans-serif; font-size: 1.15rem; color: var(--primary); font-weight: 800; margin-top: -2px; }
 
         .premium-theme-toggle {
-            background: var(--card-bg);
-            border: 1px solid var(--card-border);
-            color: var(--text-main);
-            padding: 10px 20px;
-            border-radius: 30px;
-            cursor: pointer;
-            font-weight: 700;
-            font-size: 0.85rem;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .premium-theme-toggle:hover { transform: translateY(-2px); border-color: var(--primary); }
-
-        main {
-            max-width: 900px;
-            margin: 50px auto;
-            padding: 0 24px;
-        }
-
-        .hero {
-            text-align: center;
-            margin-bottom: 40px;
-        }
-
-        .hero h1 { font-size: 2.2rem; font-weight: 800; letter-spacing: -0.5px; margin-bottom: 8px; }
-        .hero p { color: var(--text-muted); font-size: 1.05rem; }
-
-        .matrix-container { display: flex; flex-direction: column; gap: 14px; }
-
-        .matrix-card {
-            background: var(--card-bg);
-            backdrop-filter: var(--blur);
-            -webkit-backdrop-filter: var(--blur);
-            border: 1px solid var(--card-border);
-            padding: 18px 24px;
-            border-radius: 16px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            box-shadow: var(--shadow-sm);
-            position: relative;
-        }
-
-        .matrix-card::before {
-            content: ''; position: absolute; left: 0; top: 0; height: 100%; width: 4px;
-            background: linear-gradient(to bottom, var(--primary), var(--accent)); opacity: 0.6;
-        }
-
-        .meta-group { display: flex; align-items: center; gap: 15px; }
-
-        .index-box {
-            font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 1.1rem;
-            color: var(--primary); background: var(--bg-main); width: 42px; height: 42px;
-            display: flex; justify-content: center; align-items: center; border-radius: 10px;
-            border: 1px solid var(--card-border);
-        }
-
-        .badge-premium {
-            background: var(--badge-bg); color: var(--badge-text); border: 1px solid var(--badge-border);
-            padding: 6px 14px; border-radius: 10px; font-weight: 700; font-size: 0.85rem;
-        }
-
-        /* Kullanıcının kendi işaretlediği şıkkı gösteren küçük rozet */
-        .user-choice-badge {
-            background: rgba(168, 85, 247, 0.15); color: var(--accent);
-            padding: 6px 12px; border-radius: 10px; font-weight: 800; font-size: 0.85rem;
-            border: 1px solid rgba(168, 85, 247, 0.3); display: none;
-        }
-
-        .card-actions-wrapper { display: flex; align-items: center; gap: 12px; }
-
-        .action-photo-btn {
-            background: var(--badge-bg); border: 1px solid var(--card-border); color: var(--primary);
-            width: 44px; height: 44px; border-radius: 50%; cursor: pointer;
-            display: flex; justify-content: center; align-items: center; font-size: 0.95rem;
-        }
-        .action-photo-btn:hover { transform: scale(1.1); color: var(--accent); border-color: var(--accent); }
-
-        .action-play-btn {
-            background: linear-gradient(135deg, var(--primary) 0%, #312e81 100%); border: none; color: #ffffff;
-            width: 44px; height: 44px; border-radius: 50%; cursor: pointer;
-            display: flex; justify-content: center; align-items: center; font-size: 0.95rem;
-            box-shadow: 0 8px 16px -4px var(--primary-glow); transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-        }
-        .action-play-btn:hover { transform: scale(1.18) rotate(15deg); background: linear-gradient(135deg, var(--accent) 0%, var(--primary) 100%); }
-        .action-play-btn.clicked-anim { transform: scale(1.25) rotate(20deg) !important; }
-
-        /* Modallar */
-        .cinema-modal {
-            display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(2, 6, 23, 0.8); backdrop-filter: blur(12px); z-index: 2000;
-            justify-content: center; align-items: center; opacity: 0; transition: opacity 0.3s ease;
-        }
-        .cinema-modal.active { display: flex; opacity: 1; }
-
-        .cinema-body {
-            background: var(--bg-main); border: 1px solid var(--card-border);
-            width: 95%; max-width: 850px; border-radius: 24px; overflow: hidden;
-            box-shadow: 0 30px 60px -15px rgba(0,0,0,0.6); display: flex; flex-direction: column;
-        }
-
-        .cinema-header { padding: 16px 24px; border-bottom: 1px solid var(--card-border); display: flex; justify-content: space-between; align-items: center; }
-        .cinema-header h3 { font-weight: 700; font-size: 1.15rem; }
-        
-        /* Çizim ve Zoom Araç Çubuğu */
-        .toolbar-wrapper { display: flex; align-items: center; gap: 8px; margin-right: 16px; }
-        .tool-btn {
-            background: var(--badge-bg); border: 1px solid var(--card-border); color: var(--text-main);
-            width: 36px; height: 36px; border-radius: 8px; cursor: pointer; display: flex; justify-content: center; align-items: center; font-size: 0.9rem;
-        }
-        .tool-btn.active { background: var(--primary); color: #fff; border-color: var(--primary); }
-        .tool-btn:hover { transform: translateY(-1px); }
-
-        .close-circle {
             background: var(--card-bg); border: 1px solid var(--card-border); color: var(--text-main);
-            width: 38px; height: 38px; border-radius: 50%; cursor: pointer; display: flex; justify-content: center; align-items: center;
-        }
-        .close-circle:hover { background: #f43f5e; color: #fff; border-color: #f43f5e; }
-
-        .cinema-screen { position: relative; padding-bottom: 56.25%; height: 0; background: #000; }
-        .cinema-screen video { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; outline: none; }
-
-        /* Gelişmiş Kanvaslı Fotoğraf Ekranı */
-        .photo-screen {
-            padding: 20px; display: flex; justify-content: center; align-items: center;
-            background: #ffffff; min-height: 380px; position: relative; overflow: auto;
-        }
-        .canvas-container { position: relative; max-width: 100%; transition: transform 0.2s ease; transform-origin: center center; }
-        .canvas-container img { max-width: 100%; max-height: 60vh; display: block; object-fit: contain; pointer-events: none; }
-        .drawing-canvas { position: absolute; top: 0; left: 0; width: 100%; height: 100%; cursor: crosshair; }
-
-        /* Sınav Şıkları Alanı */
-        .exam-options-container {
-            display: flex; justify-content: center; gap: 12px; padding: 16px 24px;
-            background: var(--badge-bg); border-top: 1px solid var(--card-border);
-        }
-        .option-btn {
-            width: 46px; height: 46px; border-radius: 50%; border: 2px solid var(--card-border);
-            background: var(--card-bg); color: var(--text-main); font-weight: 700; font-size: 1rem;
-            cursor: pointer; display: flex justify-content: center; align-items: center;
-        }
-        .option-btn:hover { border-color: var(--primary); color: var(--primary); }
-        .option-btn.selected { background: var(--primary); border-color: var(--primary); color: #fff; box-shadow: 0 4px 12px var(--primary-glow); }
-
-        .cinema-footer-nav {
-            padding: 14px 24px; border-top: 1px solid var(--card-border);
-            display: flex; justify-content: space-between; align-items: center; background: var(--card-bg);
+            width: 38px; height: 38px; border-radius: 50%; cursor: pointer;
+            display: flex; justify-content: center; align-items: center; font-size: 0.9rem;
         }
 
-        .nav-control-btn {
-            background: var(--bg-main); border: 1px solid var(--card-border); color: var(--text-main);
-            padding: 8px 18px; border-radius: 12px; font-weight: 600; font-size: 0.85rem; cursor: pointer;
-            display: flex; align-items: center; gap: 8px;
+        main { max-width: 950px; margin: 30px auto; padding: 0 20px; }
+
+        /* Geri Dönüş ve Sıfırlama Üst Çubuğu */
+        .back-to-home-bar { display: none; justify-content: space-between; align-items: center; margin-bottom: 20px; gap: 10px; }
+        .btn-back-home { background: var(--card-bg); border: 1px solid var(--card-border); color: var(--text-main); padding: 10px 20px; border-radius: 30px; font-weight: 700; font-size: 0.85rem; cursor: pointer; display: flex; align-items: center; gap: 8px; box-shadow: var(--shadow-lg); }
+        .btn-back-home:hover { border-color: var(--primary); color: var(--primary); transform: translateY(-1px); }
+        .btn-reset-exam { background: rgba(239, 68, 68, 0.1); border: 1px solid rgba(239, 68, 68, 0.3); color: var(--danger); padding: 10px 20px; border-radius: 30px; font-weight: 700; font-size: 0.85rem; cursor: pointer; display: none; align-items: center; gap: 8px; box-shadow: var(--shadow-lg); }
+        .btn-reset-exam:hover { background: var(--danger); color: #fff; transform: translateY(-1px); }
+
+        /* ======================== Modül 1: Ana Giriş Sayfası ======================== */
+        .portal-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; margin-top: 20px; }
+        @media (max-width: 768px) { .portal-grid { grid-template-columns: 1fr; } }
+
+        .portal-btn-card {
+            background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 24px;
+            padding: 35px 25px; text-align: center; cursor: pointer; display: flex; flex-direction: column;
+            align-items: center; justify-content: center; gap: 16px; box-shadow: var(--shadow-lg);
+            text-decoration: none; color: inherit;
         }
-        .nav-control-btn:hover { background: var(--primary); color: #ffffff; border-color: var(--primary); }
-        .nav-control-btn:disabled { opacity: 0; pointer-events: none; }
+        .portal-btn-card:hover { transform: translateY(-5px); border-color: var(--primary); }
+        
+        .portal-icon-box {
+            width: 65px; height: 65px; border-radius: 20px; display: flex; justify-content: center; align-items: center;
+            font-size: 1.8rem; color: #fff; box-shadow: 0 10px 20px -5px rgba(0,0,0,0.1);
+        }
+        .p-test { background: linear-gradient(135deg, var(--primary) 0%, #4f46e5 100%); }
+        .p-pdf { background: linear-gradient(135deg, #ef4444 0%, #b91c1c 100%); }
+        .p-key { background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%); }
+        .p-video { background: linear-gradient(135deg, #a855f7 0%, #7c3aed 100%); }
+
+        .portal-btn-card h3 { font-family: 'Space Grotesk', sans-serif; font-size: 1.3rem; font-weight: 700; }
+        .portal-btn-card p { color: var(--text-muted); font-size: 0.9rem; }
+
+        /* ======================== Modül 2: Test Çözme Ekranı ======================== */
+        .exam-layout { display: none; flex-direction: column; gap: 20px; }
+        .exam-card { background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 24px; padding: 24px; box-shadow: var(--shadow-lg); position: relative; }
+        .exam-header-meta { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--card-border); padding-bottom: 16px; margin-bottom: 20px; }
+        .question-title { font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 1.3rem; color: var(--primary); }
+        
+        .toolbar { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+        .tool-btn { background: var(--badge-bg); border: 1px solid var(--card-border); color: var(--text-main); width: 36px; height: 36px; border-radius: 8px; cursor: pointer; display: flex; justify-content: center; align-items: center; font-size: 0.85rem; }
+        .tool-btn.active { background: var(--primary); color: #fff; border-color: var(--primary); box-shadow: 0 4px 10px var(--primary-glow); }
+
+        .color-palette { display: flex; align-items: center; gap: 6px; margin: 0 4px; }
+        .color-dot { width: 22px; height: 22px; border-radius: 50%; cursor: pointer; border: 2px solid transparent; box-shadow: inset 0 0 4px rgba(0,0,0,0.2); }
+        .color-dot.active { border-color: var(--text-main); transform: scale(1.2); }
+
+        /* Çalışma Alanı */
+        .workspace-screen {
+            background: #ffffff; border-radius: 16px; height: 500px; display: flex; justify-content: center; align-items: center;
+            position: relative; overflow: hidden; border: 1px solid var(--card-border); margin-bottom: 20px;
+        }
+        .canvas-holder { position: relative; width: 100%; height: 100%; display: flex; justify-content: center; align-items: center; }
+        .canvas-holder img { max-width: 85%; max-height: 85%; display: block; object-fit: contain; pointer-events: none; z-index: 1; user-select: none; }
+        .paint-canvas { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 2; }
+        
+        /* Şeffaf Silgi Efekti */
+        .paint-canvas.eraser-mode { cursor: none !important; }
+        .custom-eraser-cursor { display: none; position: fixed; width: 24px; height: 24px; border: 2px solid #ef4444; background: rgba(239, 68, 68, 0.25); border-radius: 50%; pointer-events: none; z-index: 99999; transform: translate(-50%, -50%); }
+
+        .exam-options-bar { display: flex; justify-content: center; gap: 16px; padding: 18px; background: var(--badge-bg); border-radius: 16px; margin-bottom: 20px; border: 1px solid var(--card-border); }
+        .opt-circle { width: 48px; height: 48px; border-radius: 50%; border: 2px solid var(--card-border); background: var(--card-bg); color: var(--text-main); font-weight: 800; font-size: 1.05rem; cursor: pointer; display: flex; justify-content: center; align-items: center; }
+        .opt-circle.selected { background: var(--primary); border-color: var(--primary); color: #fff; box-shadow: 0 4px 14px var(--primary-glow); }
+
+        .exam-footer-nav { display: flex; justify-content: space-between; align-items: center; gap: 10px; }
+        .nav-action-btn { background: var(--card-bg); border: 1px solid var(--card-border); color: var(--text-main); padding: 12px 24px; border-radius: 14px; font-weight: 700; font-size: 0.9rem; cursor: pointer; display: flex; align-items: center; gap: 8px; }
+        .nav-action-btn:disabled { opacity: 0.3; pointer-events: none; }
+        .btn-finish-exam { background: linear-gradient(135deg, #059669 0%, #10b981 100%); color: #fff; border: none; box-shadow: 0 6px 16px rgba(16, 185, 129, 0.3); }
+
+        /* ======================== Modül 3: Sınav Sonuç ve İnceleme Paneli ======================== */
+        .result-summary-box {
+            display: none; background: var(--card-bg); border: 2px solid var(--success);
+            border-radius: 24px; padding: 25px; margin-bottom: 25px; text-align: center;
+            box-shadow: 0 15px 35px -10px rgba(16, 185, 129, 0.2);
+        }
+        .result-flex-container { display: flex; flex-direction: column; align-items: center; gap: 16px; }
+        .result-grid { display: flex; justify-content: center; gap: 40px; font-size: 1.3rem; font-weight: 700; }
+        .res-t { color: var(--primary); } .res-d { color: var(--success); } .res-y { color: var(--danger); }
+        .btn-inline-home { background: linear-gradient(135deg, var(--primary) 0%, #4f46e5 100%); color: #fff; border: none; padding: 12px 30px; border-radius: 14px; font-weight: 700; font-size: 0.95rem; cursor: pointer; display: flex; align-items: center; gap: 8px; box-shadow: 0 4px 14px var(--primary-glow); }
+        .btn-inline-home:hover { transform: translateY(-2px); }
+
+        .analysis-container { display: none; flex-direction: column; gap: 14px; margin-top: 10px; }
+        .analysis-row { display: flex; justify-content: space-between; align-items: center; background: var(--card-bg); border: 1px solid var(--card-border); padding: 16px 24px; border-radius: 20px; box-shadow: var(--shadow-lg); }
+        @media (max-width: 650px) { .analysis-row { flex-direction: column; gap: 14px; text-align: center; } }
+        .analysis-row.correct { border-left: 6px solid var(--success); }
+        .analysis-row.wrong { border-left: 6px solid var(--danger); }
+        .analysis-row.empty { border-left: 6px solid var(--text-muted); }
+        
+        .analysis-info { display: flex; align-items: center; gap: 16px; }
+        .analysis-q-num { font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 1.15rem; width: 80px; text-align: left; color: var(--text-main); }
+        .analysis-badge-group { display: flex; gap: 10px; align-items: center; }
+        .choice-badge { padding: 6px 14px; border-radius: 10px; font-weight: 800; font-size: 0.85rem; display: flex; align-items: center; gap: 5px; }
+        .choice-badge.mine { background: rgba(239, 68, 68, 0.15); color: var(--danger); border: 1px solid rgba(239, 68, 68, 0.3); }
+        .choice-badge.mine.is-correct { background: rgba(16, 185, 129, 0.15); color: var(--success); border: 1px solid rgba(16, 185, 129, 0.3); }
+        .choice-badge.correct-answer { background: rgba(16, 185, 129, 0.2); color: var(--success); border: 1px solid var(--success); }
+
+        /* Premium Aksiyon Butonları */
+        .premium-action-group { display: flex; align-items: center; gap: 10px; }
+        .btn-premium-action {
+            border: none; color: white; padding: 10px 18px; border-radius: 12px;
+            font-weight: 700; font-size: 0.85rem; cursor: pointer; display: flex; align-items: center; gap: 8px;
+            transition: all 0.2s ease; box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        }
+        .btn-premium-action.btn-blue { background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%); box-shadow: 0 4px 12px rgba(29, 78, 216, 0.3); }
+        .btn-premium-action.btn-purple { background: linear-gradient(135deg, var(--accent) 0%, #7c3aed 100%); box-shadow: 0 4px 12px var(--accent-glow); }
+        .btn-premium-action:hover { transform: translateY(-2px); filter: brightness(1.1); }
+
+        /* ======================== Modül 4: Cevap Anahtarı Matrisi ======================== */
+        .key-layout { display: none; flex-direction: column; gap: 20px; }
+        .matrix-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); gap: 14px; }
+        .matrix-card { background: var(--card-bg); border: 1px solid var(--card-border); padding: 16px; border-radius: 16px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; text-align: center; cursor: pointer; box-shadow: var(--shadow-lg); }
+        .matrix-card:hover { border-color: var(--primary); transform: translateY(-2px); }
+        .matrix-num { font-family: 'Space Grotesk', sans-serif; font-weight: 700; color: var(--primary); }
+        .matrix-ans { background: var(--badge-bg); padding: 4px 14px; border-radius: 8px; font-weight: 800; font-size: 0.95rem; border: 1px solid var(--card-border); color: var(--text-main); }
+
+        /* ======================== Modül 5: Video Listesi Alanı ======================== */
+        .video-solutions-layout { display: none; flex-direction: column; gap: 14px; }
+        .video-card { background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 20px; padding: 18px 24px; display: flex; justify-content: space-between; align-items: center; box-shadow: var(--shadow-lg); }
+        @media (max-width: 600px) { .video-card { flex-direction: column; gap: 14px; text-align: center; } }
+        .video-card-left { display: flex; align-items: center; gap: 16px; }
+        .video-index { font-family: 'Space Grotesk', sans-serif; font-weight: 700; background: var(--badge-bg); width: 42px; height: 42px; border-radius: 12px; display: flex; justify-content: center; align-items: center; color: var(--primary); border: 1px solid var(--card-border); }
+        .video-card-left strong { color: var(--text-main); }
+
+        /* ======================== Pop-Up Sabit Modal Sistemi ======================== */
+        .cinema-modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(2, 6, 23, 0.88); backdrop-filter: blur(12px); z-index: 2000; justify-content: center; align-items: center; opacity: 0; transition: opacity 0.3s ease; }
+        .cinema-modal.active { display: flex; opacity: 1; }
+        .cinema-body { background: var(--bg-main); border: 1px solid var(--card-border); width: 95%; max-width: 750px; border-radius: 24px; overflow: hidden; position: relative; box-shadow: 0 30px 70px rgba(0,0,0,0.5); }
+        .cinema-header { padding: 16px 24px; border-bottom: 1px solid var(--card-border); display: flex; justify-content: space-between; align-items: center; }
+        .cinema-header h3 { color: var(--text-main); }
+        .close-circle { background: var(--card-bg); border: 1px solid var(--card-border); color: var(--text-main); width: 36px; height: 36px; border-radius: 50%; cursor: pointer; display: flex; justify-content: center; align-items: center; }
+        
+        /* Kesin Sabit Yükseklik Çerçevesi */
+        .cinema-screen { position: relative; display: flex; justify-content: center; align-items: center; height: 460px !important; width: 100% !important; overflow: hidden; }
+        .cinema-screen.bg-black { background: #000000 !important; } 
+        .cinema-screen.bg-white { background: #ffffff !important; } 
+        
+        .cinema-screen video { width: 100%; height: 100%; object-fit: contain; display: block; }
+        .cinema-screen img { max-width: 90% !important; max-height: 90% !important; object-fit: contain !important; display: block; margin: 0 auto; }
+        
+        .modal-footer-nav { padding: 14px 24px; border-top: 1px solid var(--card-border); display: flex; justify-content: space-between; align-items: center; background: var(--badge-bg); }
+        .modal-nav-btn { background: var(--card-bg); border: 1px solid var(--card-border); color: var(--text-main); padding: 10px 18px; border-radius: 12px; font-weight: 700; font-size: 0.85rem; cursor: pointer; display: flex; align-items: center; gap: 6px; }
+        .modal-nav-btn:disabled { opacity: 0.3; pointer-events: none; } 
+        .modal-action-watch { background: linear-gradient(135deg, var(--accent) 0%, #7c3aed 100%); color: #fff; border: none; box-shadow: 0 4px 12px var(--accent-glow); }
     </style>
 </head>
 <body>
 
+    <div class="custom-eraser-cursor" id="customEraserCursor"></div>
+
     <header>
-        <div class="brand-container">
+        <div class="brand-container" id="headerBrandLogo">
             <div class="school-logo-icon"><i class="fa-solid fa-graduation-cap"></i></div>
             <div class="brand-text">
                 <h2>Salim Yılmaz Anadolu Lisesi</h2>
                 <p>12-B // Ziada</p>
             </div>
         </div>
-        <div class="header-actions">
-            <a href="fizik-yazili-sorulari.pdf" download class="pdf-download-btn">
-                <i class="fa-solid fa-file-pdf"></i> <span>PDF İndir</span>
-            </a>
-            <button class="premium-theme-toggle" id="modeSwitch">
-                <i class="fa-solid fa-moon"></i> <span id="modeLabel">Karanlık Mod</span>
-            </button>
-        </div>
+        <button class="premium-theme-toggle" id="modeSwitch"><i class="fa-solid fa-moon"></i></button>
     </header>
 
     <main>
-        <div class="hero">
-            <h1>Fizik 2. Dönem 2. Yazılı Soruları</h1>
-            <p>İnteraktif Sınav Modu & Görüntülü Çözümler</p>
+        <div class="back-to-home-bar" id="backHomeBar">
+            <button class="btn-back-home" id="btnGoHome"><i class="fa-solid fa-house"></i> Ana Menüye Dön</button>
+            <button class="btn-reset-exam" id="btnResetExam"><i class="fa-solid fa-rotate-right"></i> Testi Sıfırla ve Baştan Çöz</button>
         </div>
-        
-        <div class="matrix-container" id="cardsGrid">
-            </div>
-    </main>
 
-    <div class="cinema-modal" id="videoCinema">
-        <div class="cinema-body">
-            <div class="cinema-header">
-                <h3 id="videoTitle">Soru Çözümü</h3>
-                <button class="close-circle" id="closeVideo"><i class="fa-solid fa-xmark"></i></button>
-            </div>
-            <div class="cinema-screen">
-                <video id="customVideoPlayer" controls controlsList="nodownload"></video>
-            </div>
-            <div class="cinema-footer-nav">
-                <button class="nav-control-btn" id="prevVideoBtn"><i class="fa-solid fa-arrow-left"></i> Önceki Soru</button>
-                <button class="nav-control-btn" id="nextVideoBtn">Sonraki Soru <i class="fa-solid fa-arrow-right"></i></button>
+        <div class="result-summary-box" id="resultSummaryBox">
+            <div class="result-flex-container">
+                <h2 style="font-family: 'Space Grotesk', sans-serif; font-size: 1.5rem; color: var(--text-main);">Sınavınız Tamamlandı! İşte Sonucunuz</h2>
+                <div class="result-grid">
+                    <div class="res-t">Toplam Soru: <span>30</span></div>
+                    <div class="res-d">Doğru Sayısı: <span id="resCorrect">0</span></div>
+                    <div class="res-y">Yanlış Sayısı: <span id="resWrong">0</span></div>
+                </div>
+                
             </div>
         </div>
-    </div>
 
-    <div class="cinema-modal" id="photoCinema">
-        <div class="cinema-body">
-            <div class="cinema-header">
-                <h3 id="photoTitle">Soru Görseli</h3>
-                <div style="display: flex; align-items: center;">
-                    <div class="toolbar-wrapper">
+        <div id="homeSection">
+            <div style="text-align: center; margin-bottom: 30px;" id="welcomeBanner">
+                <h1 style="font-size: 2.2rem; font-weight: 800; letter-spacing: -0.5px;">Fizik 2.Dönem 2.Yazılı Soruları ve Çözümleri</h1>
+                <p style="color: var(--text-muted); margin-top: 5px;"> Salim Yılmaz Anadolu Lisesi</p>
+            </div>
+
+            <div class="portal-grid">
+                <div class="portal-btn-card" id="startTestCard">
+                    <div class="portal-icon-box p-test"><i class="fa-solid fa-pen-to-square"></i></div>
+                    <h3 id="testCardTitle">Online Testi Çöz</h3>
+                    <p id="testCardDesc">Soru üzerinde çizim yap, şıkkı işaretle. Kaldığın yer otomatik korunur.</p>
+                </div>
+
+                <a href="fizik-yazili-sorulari.pdf" download class="portal-btn-card">
+                    <div class="portal-icon-box p-pdf"><i class="fa-solid fa-file-pdf"></i></div>
+                    <h3>PDF Sınavı İndir</h3>
+                    <p>Fizik yazılı kağıdını cihazına orijinal yüksek çözünürlüklü PDF olarak indir.</p>
+                </a>
+
+                <div class="portal-btn-card" id="viewKeyCard">
+                    <div class="portal-icon-box p-key"><i class="fa-solid fa-key"></i></div>
+                    <h3>Cevap Anahtarı</h3>
+                    <p> 30 soruluk sınavın cevap anahtarı görüntüle.</p>
+                </div>
+
+                <div class="portal-btn-card" id="viewVideosCard">
+                    <div class="portal-icon-box p-video"><i class="fa-solid fa-video"></i></div>
+                    <h3>Video Çözümleri</h3>
+                    <p>Anlayamadığın soruların öğretmen anlatımlı detaylı video çözümlerini izle.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="exam-layout" id="examSection">
+            <div class="exam-card">
+                <div class="exam-header-meta">
+                    <div class="question-title" id="displayQuestionNumber">Soru 1 / 30</div>
+                    <div class="toolbar">
                         <button class="tool-btn active" id="toolPen" title="Kalem"><i class="fa-solid fa-pen"></i></button>
                         <button class="tool-btn" id="toolEraser" title="Silgi"><i class="fa-solid fa-eraser"></i></button>
                         <button class="tool-btn" id="toolClear" title="Temizle"><i class="fa-solid fa-trash-can"></i></button>
-                        <div style="width: 1px; height: 24px; background: var(--card-border); margin: 0 4px;"></div>
-                        <button class="tool-btn" id="zoomIn" title="Büyüt"><i class="fa-solid fa-magnifying-glass-plus"></i></button>
-                        <button class="tool-btn" id="zoomOut" title="Küçült"><i class="fa-solid fa-magnifying-glass-minus"></i></button>
+                        
+                        <div style="width: 1px; height: 20px; background: var(--card-border); margin: 0 4px;"></div>
+                        <div class="color-palette">
+                            <div class="color-dot active" style="background: #a855f7;" data-color="#a855f7"></div>
+                            <div class="color-dot" style="background: #2563eb;" data-color="#2563eb"></div>
+                            <div class="color-dot" style="background: #10b981;" data-color="#10b981"></div>
+                            <div class="color-dot" style="background: #ef4444;" data-color="#ef4444"></div>
+                        </div>
                     </div>
-                    <button class="close-circle" id="closePhoto"><i class="fa-solid fa-xmark"></i></button>
                 </div>
+
+                <div class="workspace-screen" id="workspaceScreenArea">
+                    <div class="canvas-holder" id="zoomContainer">
+                        <img id="examQuestionImage" src="" alt="Soru Görseli">
+                        <canvas class="paint-canvas" id="paintCanvas"></canvas>
+                    </div>
+                </div>
+
+                <div class="exam-options-bar" id="optionsGroup">
+                    <button class="opt-circle" data-opt="A">A</button>
+                    <button class="opt-circle" data-opt="B">B</button>
+                    <button class="opt-circle" data-opt="C">C</button>
+                    <button class="opt-circle" data-opt="D">D</button>
+                    <button class="opt-circle" data-opt="E">E</button>
+                </div>
+
+                <div class="exam-footer-nav">
+                    <button class="nav-action-btn" id="prevQuestionBtn"><i class="fa-solid fa-arrow-left"></i> Önceki Soru</button>
+                    <button class="nav-action-btn btn-finish-exam" id="finishExamBtn"><i class="fa-solid fa-square-check"></i> Sınavı Bitir ve Sonuçları Gör</button>
+                    <button class="nav-action-btn" id="nextQuestionBtn">Sonraki Soru <i class="fa-solid fa-arrow-right"></i></button>
+                </div>
+            </div>
+        </div>
+
+        <div class="analysis-container" id="analysisContainer">
+            <h2 style="font-family: 'Space Grotesk', sans-serif; margin-bottom: 15px; font-size: 1.4rem; color: var(--text-main);">Soru Kontrol ve Detay İnceleme Listesi</h2>
+            <div id="analysisRowsWrapper" style="display: flex; flex-direction: column; gap: 12px;"></div>
+        </div>
+
+        <div class="key-layout" id="keySection">
+            <h2 style="margin-bottom: 20px; font-family: 'Space Grotesk', sans-serif; color: var(--text-main);">Cevap Anahtarı </h2>
+            <div class="matrix-grid" id="keyMatrixGrid"></div>
+        </div>
+
+        <div class="video-solutions-layout" id="videoSection">
+            <h2 style="margin-bottom: 20px; font-family: 'Space Grotesk', sans-serif; color: var(--text-main);"> Soru Çözümleri</h2>
+            <div id="videoCardsContainer" style="display: flex; flex-direction: column; gap: 12px; width: 100%;"></div>
+        </div>
+    </main>
+
+    <div class="cinema-modal" id="mediaCinema">
+        <div class="cinema-body">
+            <div class="cinema-header">
+                <h3 id="cinemaMediaTitle">Medya Görüntüleyici</h3>
+                <button class="close-circle" id="closeMedia"><i class="fa-solid fa-xmark"></i></button>
             </div>
             
-            <div class="photo-screen">
-                <div class="canvas-container" id="zoomContainer">
-                    <img id="questionImage" src="" alt="Soru Fotoğrafı">
-                    <canvas class="drawing-canvas" id="paintCanvas"></canvas>
-                </div>
-            </div>
+            <div class="cinema-screen" id="cinemaScreenArea"></div>
 
-            <div class="exam-options-container" id="optionsGroup">
-                <button class="option-btn" data-opt="A">A</button>
-                <button class="option-btn" data-opt="B">B</button>
-                <button class="option-btn" data-opt="C">C</button>
-                <button class="option-btn" data-opt="D">D</button>
-                <button class="option-btn" data-opt="E">E</button>
-            </div>
-
-            <div class="cinema-footer-nav">
-                <button class="nav-control-btn" id="prevPhotoBtn"><i class="fa-solid fa-arrow-left"></i> Önceki Soru</button>
-                <button class="nav-control-btn" id="nextPhotoBtn">Sonraki Soru <i class="fa-solid fa-arrow-right"></i></button>
+            <div class="modal-footer-nav">
+                <button class="modal-nav-btn" id="modalPrevBtn"><i class="fa-solid fa-chevron-left"></i> Önceki</button>
+                <button class="modal-nav-btn modal-action-watch" id="modalWatchVideoShortcut"><i class="fa-solid fa-video"></i> Çözüm Videosunu İzle</button>
+                <button class="modal-nav-btn" id="modalNextBtn">Sonraki <i class="fa-solid fa-chevron-right"></i></button>
             </div>
         </div>
     </div>
 
     <script>
-        // Tema Yönetimi
-        const modeSwitch = document.getElementById('modeSwitch');
-        const modeIcon = modeSwitch.querySelector('i');
-        const modeLabel = document.getElementById('modeLabel');
+        const dogruCevaplar = ['E','C','E','C','D','D','E','A','E','B','B','E','A','B','B','D','E','D','B','E','C','B','D','B','A','E','D','A','A','D'];
         
-        modeSwitch.addEventListener('click', () => {
-            const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
-            if (isDark) {
-                document.documentElement.removeAttribute('data-theme');
-                modeIcon.className = 'fa-solid fa-moon'; modeLabel.innerText = 'Karanlık Mod';
-            } else {
-                document.documentElement.setAttribute('data-theme', 'dark');
-                modeIcon.className = 'fa-solid fa-sun'; modeLabel.innerText = 'Aydınlık Mod';
-            }
-        });
+        // YEREL HAFIZA AKTARIMLARI
+        let ogrenciSecimleri = JSON.parse(localStorage.getItem('ziada_secimler')) || new Array(30).fill(null);
+        let aktifSoruIndex = parseInt(localStorage.getItem('ziada_aktif_soru')) || 0;
+        let sinavBittiMi = localStorage.getItem('ziada_sinav_bitti') === 'true'; // Sınavın bittiğini kilitleyen bayrak
+        
+        let cizimVar = false;
+        let mevcutAlet = 'pen';
+        let aktifRenk = '#a855f7';
+        let globalModalTipi = 'image'; 
+        let globalModalSoruNo = 1; 
 
-        // Cevap Anahtarı ve Kullanıcı Seçimleri Kayıt Dizisi
-        const cevaplar = ['E', 'C', 'E', 'C', 'D', 'D', 'E', 'A', 'E', 'B', 'B', 'E', 'A', 'B', 'B', 'D', 'E', 'D', 'B', 'E', 'C', 'B', 'D', 'B', 'A', 'E', 'D', 'A', 'A', 'D'];
-        const ogrenciSecimleri = new Array(30).fill(null);
+        const homeSection = document.getElementById('homeSection');
+        const examSection = document.getElementById('examSection');
+        const keySection = document.getElementById('keySection');
+        const videoSection = document.getElementById('videoSection');
+        const backHomeBar = document.getElementById('backHomeBar');
+        const btnResetExam = document.getElementById('btnResetExam');
+        const resultSummaryBox = document.getElementById('resultSummaryBox');
+        const welcomeBanner = document.getElementById('welcomeBanner');
+        const analysisContainer = document.getElementById('analysisContainer');
+        const analysisRowsWrapper = document.getElementById('analysisRowsWrapper');
 
-        const grid = document.getElementById('cardsGrid');
-        const TOPLAM_SORU = 30;
-        let aktifSoruNumarasi = 1;
-        let mevcutZoom = 1;
-
-        // Çizim Değişkenleri
+        const examQuestionImage = document.getElementById('examQuestionImage');
         const canvas = document.getElementById('paintCanvas');
         const ctx = canvas.getContext('2d');
-        let cizimVar = false;
-        let mevcutAlet = 'pen'; // pen veya eraser
+        const customEraserCursor = document.getElementById('customEraserCursor');
+        const workspaceScreenArea = document.getElementById('workspaceScreenArea');
 
-        // Kart yapılarının basılması
-        for (let num = 1; num <= TOPLAM_SORU; num++) {
-            const card = document.createElement('div');
-            card.className = 'matrix-card';
-            card.id = `card-id-${num}`;
-            
-            card.innerHTML = `
-                <div class="meta-group">
-                    <div class="index-box">${num}</div>
-                    <div class="badge-premium">Cevap: ${cevaplar[num-1]}</div>
-                    <div class="user-choice-badge" id="user-badge-${num}">Senin Şıkkın: </div>
-                </div>
-                <div class="card-actions-wrapper">
-                    <button class="action-photo-btn" data-num="${num}"><i class="fa-regular fa-image"></i></button>
-                    <button class="action-play-btn" data-num="${num}"><i class="fa-solid fa-play"></i></button>
-                </div>
-            `;
-            grid.appendChild(card);
-        }
-
-        // Seçiciler
-        const videoCinema = document.getElementById('videoCinema');
-        const photoCinema = document.getElementById('photoCinema');
-        const customVideoPlayer = document.getElementById('customVideoPlayer');
-        const questionImage = document.getElementById('questionImage');
-        const zoomContainer = document.getElementById('zoomContainer');
-        const optionsGroup = document.getElementById('optionsGroup');
-
-        // Modal Yükleme Fonksiyonları
-        function videoModalYukle(num) {
-            aktifSoruNumarasi = parseInt(num);
-            document.getElementById('videoTitle').innerText = `Soru ${aktifSoruNumarasi} - Video Çözümü`;
-            customVideoPlayer.src = `video${aktifSoruNumarasi}.mp4`;
-            customVideoPlayer.play();
-            document.getElementById('prevVideoBtn').disabled = (aktifSoruNumarasi === 1);
-            document.getElementById('nextVideoBtn').disabled = (aktifSoruNumarasi === TOPLAM_SORU);
-        }
-
-        function photoModalYukle(num) {
-            aktifSoruNumarasi = parseInt(num);
-            document.getElementById('photoTitle').innerText = `Soru ${aktifSoruNumarasi} - İnteraktif Sınav Çözümü`;
-            
-            // Zoom sıfırlama
-            mevcutZoom = 1;
-            zoomContainer.style.transform = `scale(${mevcutZoom})`;
-            
-            // Resmi yükle ve yüklendikten sonra kanvas boyutunu ayarla
-            questionImage.src = `image${aktifSoruNumarasi}.png`;
-            questionImage.onload = () => { canvasBoyutlandir(); };
-
-            // Şık butonlarının aktifliğini tazeleme
-            document.querySelectorAll('.option-btn').forEach(btn => {
-                btn.classList.remove('selected');
-                if(btn.getAttribute('data-opt') === ogrenciSecimleri[aktifSoruNumarasi - 1]) {
-                    btn.classList.add('selected');
-                }
-            });
-
-            document.getElementById('prevPhotoBtn').disabled = (aktifSoruNumarasi === 1);
-            document.getElementById('nextPhotoBtn').disabled = (aktifSoruNumarasi === TOPLAM_SORU);
-        }
-
-        // Kanvas Boyutunu Resme Eşitleyen Fonksiyon
-        function canvasBoyutlandir() {
-            canvas.width = questionImage.clientWidth;
-            canvas.height = questionImage.clientHeight;
+        function kanvasBoyutunuKoru() {
+            canvas.width = workspaceScreenArea.clientWidth;
+            canvas.height = workspaceScreenArea.clientHeight;
             ctx.lineCap = 'round';
             ctx.lineWidth = 3;
         }
 
-        // Çizim Olay Dinleyicileri
-        function koordinatAl(e) {
-            const rect = canvas.getBoundingClientRect();
-            // Zoom oranına bölerek koordinat kaymasını engelliyoruz
-            return {
-                x: (e.clientX - rect.left) / mevcutZoom,
-                y: (e.clientY - rect.top) / mevcutZoom
-            };
+        function hafizayaKaydet() {
+            localStorage.setItem('ziada_secimler', JSON.stringify(ogrenciSecimleri));
+            localStorage.setItem('ziada_aktif_soru', aktifSoruIndex);
+            localStorage.setItem('ziada_sinav_bitti', sinavBittiMi);
         }
 
-        canvas.addEventListener('mousedown', (e) => {
-            cizimVar = true;
-            const k = koordinatAl(e);
-            ctx.beginPath();
-            ctx.moveTo(k.x, k.y);
+        // Giriş kartlarındaki metinleri sınav durumuna göre dinamik güncelleyen fonksiyon
+        function menuButonMetinleriniGuncelle() {
+            const title = document.getElementById('testCardTitle');
+            const desc = document.getElementById('testCardDesc');
+            if(sinavBittiMi) {
+                title.innerText = "Sınav Sonuçlarını Gör";
+                desc.innerText = "Tamamladığınız sınavın detaylı doğru/yanlış analiz listesini tekrar inceleyin.";
+            } else {
+                title.innerText = "Online Testi Çöz";
+                desc.innerText = "Soru üzerinde çizim yap, şıkkı işaretle. Kaldığın yer otomatik korunur.";
+            }
+        }
+
+        function ekranDegistir(hedef) {
+            homeSection.style.display = 'none';
+            examSection.style.display = 'none';
+            keySection.style.display = 'none';
+            videoSection.style.display = 'none';
+            analysisContainer.style.display = 'none';
+            backHomeBar.style.display = 'flex';
+            btnResetExam.style.display = 'none';
+
+            if(hedef === 'home') {
+                homeSection.style.display = 'block';
+                backHomeBar.style.display = 'none';
+                welcomeBanner.style.display = 'block';
+                menuButonMetinleriniGuncelle();
+            } else if(hedef === 'exam') {
+                examSection.style.display = 'flex';
+                btnResetExam.style.display = 'flex';
+                soruYukle(aktifSoruIndex);
+            } else if(hedef === 'key') {
+                keySection.style.display = 'flex';
+                cevapAnahtariOlustur();
+            } else if(hedef === 'video') {
+                videoSection.style.display = 'flex';
+                videoListesiOlustur();
+            } else if(hedef === 'results_page') {
+                analysisContainer.style.display = 'flex';
+                btnResetExam.style.display = 'flex'; // Sonuç ekranındayken de testi sıfırlama hakkı tanıyoruz
+                skorHesaplaVeYaz();
+                sonucListesiInsaEt();
+            }
+            window.scrollTo({top: 0});
+        }
+
+        // KRİTİK SEÇİM ALGORİTMASI: Sınav bittiyse sonuç ekranına, bitmediyse soru çözme ekranına atar.
+        document.getElementById('startTestCard').addEventListener('click', () => {
+            if(sinavBittiMi) {
+                ekranDegistir('results_page');
+            } else {
+                ekranDegistir('exam');
+            }
         });
 
-        canvas.addEventListener('mousemove', (e) => {
-            if (!cizimVar) return;
-            const k = koordinatAl(e);
+        document.getElementById('viewKeyCard').addEventListener('click', () => ekranDegistir('key'));
+        document.getElementById('viewVideosCard').addEventListener('click', () => ekranDegistir('video'));
+        
+        function anaMenuyeDonYumusak() {
+            resultSummaryBox.style.display = 'none';
+            ekranDegistir('home');
+        }
+
+        // Testi Sıfırla ve Baştan Çöz Buton Fonksiyonu (Her şeyi uçurur)
+        document.getElementById('btnResetExam').addEventListener('click', () => {
+            if(confirm("Tüm işaretlemeleriniz ve sonuçlarınız silinecek, baştan başlayacaksınız. Emin misiniz?")) {
+                ogrenciSecimleri = new Array(30).fill(null);
+                aktifSoruIndex = 0;
+                sinavBittiMi = false;
+                hafizayaKaydet();
+                
+                resultSummaryBox.style.display = 'none';
+                welcomeBanner.style.display = 'block';
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                
+                ekranDegistir('exam');
+            }
+        });
+
+        document.getElementById('btnGoHome').addEventListener('click', anaMenuyeDonYumusak);
+        
+        document.getElementById('headerBrandLogo').addEventListener('click', anaMenuyeDonYumusak);
+
+        // Sayfa ilk yüklendiğinde buton metinlerini kontrol et
+        menuButonMetinleriniGuncelle();
+        // Eğer kullanıcı sayfayı yenilediğinde zaten bitmiş bir sınav varsa üst skoru hazır tutalım
+        if(sinavBittiMi) {
+            skorHesaplaVeYaz();
+        }
+
+        // ======================== MEDYA POP-UP ÇERÇEVE KONTROLLERİ ========================
+        const mediaCinema = document.getElementById('mediaCinema');
+        const cinemaScreenArea = document.getElementById('cinemaScreenArea');
+        const cinemaMediaTitle = document.getElementById('cinemaMediaTitle');
+        const modalWatchVideoShortcut = document.getElementById('modalWatchVideoShortcut');
+
+        function modalMedyaAc(tip, soruNo) {
+            globalModalTipi = tip;
+            globalModalSoruNo = parseInt(soruNo);
+            mediaCinema.classList.add('active');
+            modalIcerikGuncelle();
+        }
+
+        function modalIcerikGuncelle() {
+            cinemaScreenArea.innerHTML = '';
             
-            if (mevcutAlet === 'pen') {
-                ctx.globalCompositeOperation = 'source-over';
-                ctx.strokeStyle = '#a855f7'; // Şık Mor Çizim Rengi
-                ctx.lineWidth = 3;
+            if(globalModalTipi === 'image') {
+                cinemaScreenArea.className = "cinema-screen bg-white";
+                cinemaMediaTitle.innerText = `Soru ${globalModalSoruNo}`;
+                modalWatchVideoShortcut.style.display = 'flex';
+                
+                const img = document.createElement('img');
+                img.src = `image${globalModalSoruNo}.png`;
+                cinemaScreenArea.appendChild(img);
             } else {
-                ctx.globalCompositeOperation = 'destination-out'; // Silgi Modu
-                ctx.lineWidth = 20;
+                cinemaScreenArea.className = "cinema-screen bg-black";
+                cinemaMediaTitle.innerText = `Soru ${globalModalSoruNo} - Çözüm Videosu`;
+                modalWatchVideoShortcut.style.display = 'none';
+                
+                const video = document.createElement('video');
+                video.src = `video${globalModalSoruNo}.mp4`;
+                video.controls = true;
+                video.autoplay = true;
+                cinemaScreenArea.appendChild(video);
             }
-            ctx.lineTo(k.x, k.y);
-            ctx.stroke();
+
+            document.getElementById('modalPrevBtn').disabled = (globalModalSoruNo === 1);
+            document.getElementById('modalNextBtn').disabled = (globalModalSoruNo === 30);
+        }
+
+        document.getElementById('closeMedia').addEventListener('click', () => { mediaCinema.classList.remove('active'); cinemaScreenArea.innerHTML = ''; });
+        document.getElementById('modalPrevBtn').addEventListener('click', () => { if(globalModalSoruNo > 1) { globalModalSoruNo--; modalIcerikGuncelle(); } });
+        document.getElementById('modalNextBtn').addEventListener('click', () => { if(globalModalSoruNo < 30) { globalModalSoruNo++; modalIcerikGuncelle(); } });
+        modalWatchVideoShortcut.addEventListener('click', () => { globalModalTipi = 'video'; modalIcerikGuncelle(); });
+
+        // ======================== CEVAP ANAHTARI VE VİDEO LISTELEME PANELİ ========================
+        function cevapAnahtariOlustur() {
+            const grid = document.getElementById('keyMatrixGrid');
+            grid.innerHTML = '';
+            for(let i=0; i<30; i++) {
+                const item = document.createElement('div');
+                item.className = 'matrix-card';
+                item.innerHTML = `
+                    <div class="matrix-num">Soru ${i+1}</div>
+                    <div class="matrix-ans">${dogruCevaplar[i]}</div>
+                `;
+                item.addEventListener('click', () => modalMedyaAc('image', i+1));
+                grid.appendChild(item);
+            }
+        }
+
+        function videoListesiOlustur() {
+            const container = document.getElementById('videoCardsContainer');
+            container.innerHTML = '';
+            for(let i=1; i<=30; i++) {
+                const item = document.createElement('div');
+                item.className = 'video-card';
+                item.innerHTML = `
+                    <div class="video-card-left">
+                        <div class="video-index">${i}</div>
+                        <strong>${i}.Soru</strong>
+                    </div>
+                    <div class="premium-action-group">
+                        <button class="btn-premium-action btn-blue" onclick="modalMedyaAc('image', ${i})"><i class="fa-solid fa-image"></i> Soruyu Gör</button>
+                        <button class="btn-premium-action btn-purple" onclick="modalMedyaAc('video', ${i})"><i class="fa-solid fa-play"></i> Çözümü İzle</button>
+                    </div>
+                `;
+                container.appendChild(item);
+            }
+        }
+
+        // ======================== BAŞARI RAPORU VE ANALİZ MOTORU ========================
+        function skorHesaplaVeYaz() {
+            let d = 0; let y = 0;
+            for(let i=0; i<30; i++) {
+                if(ogrenciSecimleri[i] === dogruCevaplar[i]) d++;
+                else if(ogrenciSecimleri[i] !== null) y++;
+            }
+            document.getElementById('resCorrect').innerText = d;
+            document.getElementById('resWrong').innerText = y;
+            resultSummaryBox.style.display = 'block'; 
+            welcomeBanner.style.display = 'none';
+        }
+
+        function sonucListesiInsaEt() {
+            analysisRowsWrapper.innerHTML = '';
+            for(let i=0; i<30; i++) {
+                const sSecim = ogrenciSecimleri[i];
+                const dCevap = dogruCevaplar[i];
+                
+                let durumClass = 'empty';
+                let mineBadgeHTML = `<div class="choice-badge mine">Senin Şıkkın: Boş</div>`;
+                
+                if(sSecim !== null) {
+                    if(sSecim === dCevap) {
+                        durumClass = 'correct';
+                        mineBadgeHTML = `<div class="choice-badge mine is-correct"><i class="fa-solid fa-circle-check"></i> Senin Şıkkın: ${sSecim}</div>`;
+                    } else {
+                        durumClass = 'wrong';
+                        mineBadgeHTML = `<div class="choice-badge mine"><i class="fa-solid fa-circle-xmark"></i> Senin Şıkkın: ${sSecim}</div>`;
+                    }
+                }
+
+                const row = document.createElement('div');
+                row.className = `analysis-row ${durumClass}`;
+                row.innerHTML = `
+                    <div class="analysis-info">
+                        <div class="analysis-q-num">Soru ${i+1}</div>
+                        <div class="analysis-badge-group">
+                            ${mineBadgeHTML}
+                            <div class="choice-badge correct-answer">Doğru Cevap: ${dCevap}</div>
+                        </div>
+                    </div>
+                    <div class="premium-action-group">
+                        <button class="btn-premium-action btn-blue" onclick="modalMedyaAc('image', ${i+1})"><i class="fa-solid fa-image"></i> Soruyu İncele</button>
+                        <button class="btn-premium-action btn-purple" onclick="modalMedyaAc('video', ${i+1})"><i class="fa-solid fa-play"></i> Çözüm Videosu</button>
+                    </div>
+                `;
+                analysisRowsWrapper.appendChild(row);
+            }
+        }
+
+        // ======================== TESTİN TEMEL AKIŞI ========================
+        function soruYukle(index) {
+            aktifSoruIndex = index;
+            hafizayaKaydet();
+            
+            document.getElementById('displayQuestionNumber').innerText = `Soru ${aktifSoruIndex + 1} / 30`;
+            
+            examQuestionImage.src = `image${aktifSoruIndex + 1}.png`;
+            examQuestionImage.onload = () => { kanvasBoyutunuKoru(); };
+
+            document.querySelectorAll('.opt-circle').forEach(btn => {
+                btn.className = 'opt-circle';
+                const letter = btn.getAttribute('data-opt');
+                if(letter === ogrenciSecimleri[aktifSoruIndex]) btn.classList.add('selected');
+            });
+
+            document.getElementById('prevQuestionBtn').disabled = (aktifSoruIndex === 0);
+            document.getElementById('nextQuestionBtn').disabled = (aktifSoruIndex === 29);
+        }
+
+        document.getElementById('optionsGroup').addEventListener('click', (e) => {
+            if(sinavBittiMi) return; // Sınav bittiyse işaretleme yapılamaz
+            const btn = e.target.closest('.opt-circle');
+            if(!btn) return;
+            document.querySelectorAll('.opt-circle').forEach(b => b.classList.remove('selected'));
+            btn.classList.add('selected');
+            ogrenciSecimleri[aktifSoruIndex] = btn.getAttribute('data-opt');
+            hafizayaKaydet();
         });
 
+        document.getElementById('prevQuestionBtn').addEventListener('click', () => { if(aktifSoruIndex > 0) soruYukle(aktifSoruIndex - 1); });
+        document.getElementById('nextQuestionBtn').addEventListener('click', () => { if(aktifSoruIndex < 29) soruYukle(aktifSoruIndex + 1); });
+
+        // Sınavı Sonuçlandırma Kilidi
+        document.getElementById('finishExamBtn').addEventListener('click', () => {
+            if(confirm("Sınavı bitirmek ve doğru/yanlış analiz listesini görmek istiyor musunuz?")) {
+                sinavBittiMi = true; // Sınav bitti durumunu kilitle
+                hafizayaKaydet();
+                ekranDegistir('results_page'); 
+            }
+        });
+
+        // ======================== ÇİZİM ALANI KONTROLLERİ ========================
+        function koordinatHesapla(e) {
+            const rect = canvas.getBoundingClientRect();
+            return { x: e.clientX - rect.left, y: e.clientY - rect.top };
+        }
+        
+        canvas.addEventListener('mousedown', (e) => { if(sinavBittiMi) return; cizimVar = true; const k = koordinatHesapla(e); ctx.beginPath(); ctx.moveTo(k.x, k.y); });
+        canvas.addEventListener('mousemove', (e) => {
+            const k = koordinatHesapla(e);
+            
+            if(mevcutAlet === 'eraser' && !sinavBittiMi) {
+                customEraserCursor.style.display = 'block';
+                customEraserCursor.style.left = e.clientX + 'px';
+                customEraserCursor.style.top = e.clientY + 'px';
+            }
+
+            if(!cizimVar || sinavBittiMi) return;
+            
+            if(mevcutAlet === 'pen') { 
+                ctx.globalCompositeOperation = 'source-over'; 
+                ctx.strokeStyle = aktifRenk; 
+                ctx.lineWidth = 3; 
+            } else { 
+                ctx.globalCompositeOperation = 'destination-out'; 
+                ctx.lineWidth = 24; 
+            }
+            ctx.lineTo(k.x, k.y); ctx.stroke();
+        });
+        
         canvas.addEventListener('mouseup', () => cizimVar = false);
-        canvas.addEventListener('mouseleave', () => cizimVar = false);
+        canvas.addEventListener('mouseleave', () => { cizimVar = false; customEraserCursor.style.display = 'none'; });
+        canvas.addEventListener('mouseenter', () => { if(mevcutAlet === 'eraser' && !sinavBittiMi) customEraserCursor.style.display = 'block'; });
 
-        // Dokunmatik Cihazlar İçin Çizim Desteği (Mobil)
-        canvas.addEventListener('touchstart', (e) => {
-            cizimVar = true;
-            const t = e.touches[0];
-            const k = koordinatAl(t);
-            ctx.beginPath();
-            ctx.moveTo(k.x, k.y);
-        });
-        canvas.addEventListener('touchmove', (e) => {
-            if (!cizimVar) return;
-            e.preventDefault();
-            const t = e.touches[0];
-            const k = koordinatAl(t);
-            if (mevcutAlet === 'pen') {
-                ctx.globalCompositeOperation = 'source-over';
-                ctx.strokeStyle = '#a855f7';
-                ctx.lineWidth = 3;
-            } else {
-                ctx.globalCompositeOperation = 'destination-out';
-                ctx.lineWidth = 20;
-            }
-            ctx.lineTo(k.x, k.y);
-            ctx.stroke();
-        });
+        // Mobil Dokunma Entegrasyonu
+        canvas.addEventListener('touchstart', (e) => { if(sinavBittiMi) return; cizimVar = true; const k = koordinatHesapla(e.touches[0]); ctx.beginPath(); ctx.moveTo(k.x, k.y); });
+        canvas.addEventListener('touchmove', (e) => { if(!cizimVar || sinavBittiMi) return; e.preventDefault(); const k = koordinatHesapla(e.touches[0]); if(mevcutAlet === 'pen') { ctx.globalCompositeOperation = 'source-over'; ctx.strokeStyle = aktifRenk; ctx.lineWidth = 3; } else { ctx.globalCompositeOperation = 'destination-out'; ctx.lineWidth = 24; } ctx.lineTo(k.x, k.y); ctx.stroke(); });
         canvas.addEventListener('touchend', () => cizimVar = false);
 
-        // Araç Çubuğu Kontrolleri
-        document.getElementById('toolPen').addEventListener('click', () => {
-            mevcutAlet = 'pen';
-            document.getElementById('toolPen').classList.add('active');
-            document.getElementById('toolEraser').classList.remove('active');
+        document.getElementById('toolPen').addEventListener('click', () => { 
+            mevcutAlet = 'pen'; 
+            document.getElementById('toolPen').classList.add('active'); 
+            document.getElementById('toolEraser').classList.remove('active'); 
+            canvas.classList.remove('eraser-mode');
+            customEraserCursor.style.display = 'none';
         });
-        document.getElementById('toolEraser').addEventListener('click', () => {
-            mevcutAlet = 'eraser';
-            document.getElementById('toolEraser').classList.add('active');
-            document.getElementById('toolPen').classList.remove('active');
+        
+        document.getElementById('toolEraser').addEventListener('click', () => { 
+            mevcutAlet = 'eraser'; 
+            document.getElementById('toolEraser').classList.add('active'); 
+            document.getElementById('toolPen').classList.remove('active'); 
+            canvas.classList.add('eraser-mode');
         });
-        document.getElementById('toolClear').addEventListener('click', () => {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-        });
-
-        // Yakınlaştırma (Zoom) Ayarları
-        document.getElementById('zoomIn').addEventListener('click', () => {
-            if (mevcutZoom < 2.5) { mevcutZoom += 0.2; zoomContainer.style.transform = `scale(${mevcutZoom})`; }
-        });
-        document.getElementById('zoomOut').addEventListener('click', () => {
-            if (mevcutZoom > 0.6) { mevcutZoom -= 0.2; zoomContainer.style.transform = `scale(${mevcutZoom})`; }
-        });
-
-        // Şık İşaretleme Sistemi
-        optionsGroup.addEventListener('click', (e) => {
-            const btn = e.target.closest('.option-btn');
-            if (!btn) return;
-            
-            document.querySelectorAll('.option-btn').forEach(b => b.classList.remove('selected'));
-            btn.classList.add('selected');
-            
-            const secilenSik = btn.getAttribute('data-opt');
-            ogrenciSecimleri[aktifSoruNumarasi - 1] = secilenSik;
-
-            // Ana sayfadaki karta şık rozetini işleme
-            const badge = document.getElementById(`user-badge-${aktifSoruNumarasi}`);
-            badge.innerText = `Senin Şıkkın: ${secilenSik}`;
-            badge.style.display = 'inline-block';
+        
+        document.getElementById('toolClear').addEventListener('click', () => { if(!sinavBittiMi) ctx.clearRect(0,0,canvas.width,canvas.height); });
+        
+        document.querySelectorAll('.color-dot').forEach(dot => {
+            dot.addEventListener('click', (e) => {
+                if(sinavBittiMi) return;
+                if(mevcutAlet !== 'pen') document.getElementById('toolPen').click();
+                document.querySelectorAll('.color-dot').forEach(d => d.classList.remove('active'));
+                e.target.classList.add('active');
+                aktifRenk = e.target.getAttribute('data-color');
+            });
         });
 
-        // Ana Izgara Tıklama Dinleyicileri
-        grid.addEventListener('click', (e) => {
-            const playBtn = e.target.closest('.action-play-btn');
-            const photoBtn = e.target.closest('.action-photo-btn');
-            
-            if (playBtn) {
-                playBtn.classList.add('clicked-anim');
-                const sNum = playBtn.getAttribute('data-num');
-                setTimeout(() => {
-                    videoCinema.classList.add('active');
-                    videoModalYukle(sNum);
-                    playBtn.classList.remove('clicked-anim');
-                }, 150);
-            } 
-            else if (photoBtn) {
-                const sNum = photoBtn.getAttribute('data-num');
-                photoCinema.classList.add('active');
-                photoModalYukle(sNum);
-            }
+        // Karanlık / Aydınlık Mod İstasyonu
+        const modeSwitch = document.getElementById('modeSwitch');
+        modeSwitch.addEventListener('click', () => {
+            if(document.documentElement.getAttribute('data-theme') === 'dark') { document.documentElement.removeAttribute('data-theme'); modeSwitch.querySelector('i').className = 'fa-solid fa-moon'; }
+            else { document.documentElement.setAttribute('data-theme', 'dark'); modeSwitch.querySelector('i').className = 'fa-solid fa-sun'; }
         });
 
-        // Önceki - Sonraki Navigasyonları
-        document.getElementById('prevVideoBtn').addEventListener('click', () => { if (aktifSoruNumarasi > 1) videoModalYukle(aktifSoruNumarasi - 1); });
-        document.getElementById('nextVideoBtn').addEventListener('click', () => { if (aktifSoruNumarasi < TOPLAM_SORU) videoModalYukle(aktifSoruNumarasi + 1); });
-        document.getElementById('prevPhotoBtn').addEventListener('click', () => { if (aktifSoruNumarasi > 1) photoModalYukle(aktifSoruNumarasi - 1); });
-        document.getElementById('nextPhotoBtn').addEventListener('click', () => { if (aktifSoruNumarasi < TOPLAM_SORU) photoModalYukle(aktifSoruNumarasi + 1); });
-
-        // Kapatma Mekanizmaları
-        document.getElementById('closeVideo').addEventListener('click', () => {
-            videoCinema.classList.remove('active'); customVideoPlayer.pause(); customVideoPlayer.src = "";
-        });
-        document.getElementById('closePhoto').addEventListener('click', () => {
-            photoCinema.classList.remove('active'); questionImage.src = "";
-        });
-
-        window.addEventListener('click', (e) => {
-            if (e.target === videoCinema) { videoCinema.classList.remove('active'); customVideoPlayer.pause(); customVideoPlayer.src = ""; }
-            if (e.target === photoCinema) { photoCinema.classList.remove('active'); questionImage.src = ""; }
-        });
+        window.addEventListener('resize', kanvasBoyutunuKoru);
     </script>
 </body>
 </html>
